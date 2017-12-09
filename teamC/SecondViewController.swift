@@ -20,8 +20,8 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         self.view.backgroundColor = UIColor.white
         // 画像を設定する.
         let myImage: UIImage = UIImage(named: "ももこ.png")!
-        let imageWidth: CGFloat = view.frame.size.width / 2
-        let imageHeight: CGFloat = view.frame.size.height / 2
+        let imageWidth: CGFloat = view.frame.size.width
+        let imageHeight: CGFloat = view.frame.size.height
         let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
         let downPosY: CGFloat = 250
         // 表示用のUIImageViewを生成.
