@@ -12,7 +12,15 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     private var dateTextField: UITextField!
     private var myTabBar:MyTabBar!
     private var hpBar:UIProgressView!
-    private var datelabel:UILabel!
+    private var dateLabel = UILabel()
+    private var sleepLabel = UILabel()
+    
+    // 日時フォーマット
+    var dateFormatter: DateFormatter{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        return formatter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +28,10 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         self.view.backgroundColor = UIColor.white
         // 画像を設定する.
         let myImage: UIImage = UIImage(named: "ももこ.png")!
-        let imageWidth: CGFloat = view.frame.size.width
-        let imageHeight: CGFloat = view.frame.size.height
+        let imageWidth: CGFloat = 1241 / 3
+        let imageHeight: CGFloat = 2105 / 3
         let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
-        let downPosY: CGFloat = 250
+        let downPosY: CGFloat = 150
         // 表示用のUIImageViewを生成.
         let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
         // UIImageViewに画像を設定する.
@@ -34,11 +42,38 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         self.view.addSubview(myScaleDownView)
         
     //date表示
+        dateLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
+        dateLabel.layer.position = CGPoint(x: 200 , y: 100)
+        //　ラベル枠の枠線太さと色
+        dateLabel.layer.borderColor = UIColor.black.cgColor
+        dateLabel.layer.borderWidth = 2
+        //文字サイズ
+        dateLabel.font = UIFont.systemFont(ofSize:25)
+        // Textを中央寄せにする.
+        dateLabel.textAlignment = NSTextAlignment.center
+        self.view.addSubview(dateLabel)
+        // 初回
+        updateDateLabel()
+        // 一定間隔で実行
+        let time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateDateLabel), userInfo: nil, repeats: true)
+        time.fire()    // 無くても動くけどこれが無いと初回の実行がラグる
         
-        // 1秒ごとに「displayClock」を実行する
-        let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayClock), userInfo: nil, repeats: true)
-        timer.fire()    // 無くても動くけどこれが無いと初回の実行がラグる
-        
+    //睡眠時間
+        sleepLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
+        sleepLabel.layer.position = CGPoint(x: 650 , y: 100)
+        //　ラベル枠の枠線太さと色
+        sleepLabel.layer.borderColor = UIColor.black.cgColor
+        sleepLabel.layer.borderWidth = 2
+        sleepLabel.text = """
+        前回の睡眠時間
+        Test1
+        """
+        sleepLabel.numberOfLines = 0
+        //文字サイズ
+        sleepLabel.font = UIFont.systemFont(ofSize:25)
+        // Textを中央寄せにする.
+        sleepLabel.textAlignment = NSTextAlignment.center
+        self.view.addSubview(sleepLabel)
         
         
     //ラベル
@@ -78,11 +113,9 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         myTabBar.barTintColor = UIColor.lightGray
         //選択されていないボタンの色
         myTabBar.unselectedItemTintColor = UIColor.white
-        //ボタンを押した時の色
-        myTabBar.tintColor = UIColor.blue
         //ボタンを生成
         //文字と画像
-        let home:UITabBarItem = UITabBarItem(title: "ホーム", image: UIImage(named:"home2.png"), tag: 1)
+        let home:UITabBarItem = UITabBarItem(title: "ホーム", image: UIImage(named:"home2.png")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), tag: 1)
         let lib:UITabBarItem = UITabBarItem(title: "図鑑", image: UIImage(named:"book3.png"), tag: 2)
         let calle:UITabBarItem = UITabBarItem(title: "カレンダー", image: UIImage(named:"cale.png"), tag: 3)
         //ボタンをタブバーに配置する
@@ -105,7 +138,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         case 3:
-            let myViewController: UIViewController = calendar()// 遷移するViewを定義する.
+            let myViewController: UIViewController = calendarView()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
     
@@ -114,33 +147,14 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         }
     }
     
-    // 現在時刻を表示する処理
-    @objc func displayClock() {
-        datelabel = UILabel()
-        datelabel.font = UIFont(name: "HiraKakuInterface-W1", size:UIFont.labelFontSize)
-        datelabel.frame = CGRect(x: 0, y: self.view.bounds.height/2, width: self.view.bounds.width, height: 20)
-        datelabel.textAlignment = NSTextAlignment.center
-        self.view.addSubview(datelabel)
-        datelabel.text = ""
-        // 現在時刻を「HH:MM:SS」形式で取得する
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
-        var displayTime = formatter.string(from: Date())    // Date()だけで現在時刻を表す
-        // 0から始まる時刻の場合は「 H:MM:SS」形式にする
-        if displayTime.hasPrefix("0") {
-            // 最初に見つかった0だけ削除(スペース埋め)される
-            if let range = displayTime.range(of: "0") {
-                displayTime.replaceSubrange(range, with: " ")
-            }
-        }
-        // ラベルに表示
-        
-        datelabel.text = displayTime
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @objc func updateDateLabel(){
+        let now = NSDate()
+        dateLabel.text = dateFormatter.string(from: now as Date)
+    }
+
     
 }

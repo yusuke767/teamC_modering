@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import FSCalendar
 
-class calendar: UIViewController ,UITabBarDelegate{
+class calendarView: UIViewController , UITabBarDelegate , FSCalendarDataSource , FSCalendarDelegate{
     private var myTabBar:MyTabBar!
+    fileprivate weak var calendar: FSCalendar!
+    private var coleView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,14 +20,31 @@ class calendar: UIViewController ,UITabBarDelegate{
         //画面を表示
         self.view.backgroundColor = UIColor.white
         
-        //ラベル
-        let label = UILabel()
+    // Labelを作成.
+        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        // UILabelの背景をオレンジ色に.
+        label.backgroundColor = UIColor.orange
+        // 文字の色を白に定義.
+        label.textColor = UIColor.white
+        // UILabelに文字を代入.
         label.text = "カレンダー"
-        label.font = UIFont(name: "HiraMinProN-W3", size: 80)
-        label.sizeToFit()
-        label.center = CGPoint(x: 200, y: 100) // UILabelの中央座標を (200, 100) にする
-        label.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.width/3)
+        //文字サイズ
+        label.font = UIFont.systemFont(ofSize:30)
+        // 文字の影をグレーに定義.
+        label.shadowColor = UIColor.gray
+        // Textを中央寄せにする.
+        label.textAlignment = NSTextAlignment.center
+        // ViewにLabelを追加.
         self.view.addSubview(label)
+        
+    //カレンダー
+        let calendar = FSCalendar(frame: CGRect(x:50, y: 100, width:self.view.frame.width - 100 , height: self.view.frame.height - 200))
+        calendar.dataSource = self
+        calendar.delegate = self
+        view.addSubview(calendar)
+        self.calendar = calendar
+        
+       
         
         //tabbar
         let width = self.view.frame.width
@@ -38,12 +58,10 @@ class calendar: UIViewController ,UITabBarDelegate{
         myTabBar.barTintColor = UIColor.lightGray
         //選択されていないボタンの色
         myTabBar.unselectedItemTintColor = UIColor.white
-        //ボタンを押した時の色
-        myTabBar.tintColor = UIColor.blue
         //ボタンを生成
         let home:UITabBarItem = UITabBarItem(title: "ホーム", image: UIImage(named:"home2.png"), tag: 1)
         let lib:UITabBarItem = UITabBarItem(title: "図鑑", image: UIImage(named:"book3.png"), tag: 2)
-        let calle:UITabBarItem = UITabBarItem(title: "カレンダー", image: UIImage(named:"cale.png"), tag: 3)
+        let calle:UITabBarItem = UITabBarItem(title: "カレンダー", image: UIImage(named:"cale.png")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), tag: 3)
         
         //ボタンをタブバーに配置する
         myTabBar.items = [home,lib,calle]
@@ -64,7 +82,7 @@ class calendar: UIViewController ,UITabBarDelegate{
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         case 3:
-            let myViewController: UIViewController = calendar()// 遷移するViewを定義する.
+            let myViewController: UIViewController = calendarView()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         default : return

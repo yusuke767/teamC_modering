@@ -8,18 +8,24 @@
 
 import UIKit
 
-class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UITableViewDelegate,UITableViewDataSource {
+class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
     private var myTabBar:MyTabBar!
     private var myScrollView: UIScrollView!
+    private var colleButton:UIButton!
+    private var myWindow: UIWindow!
+    private var myWindowButton: UIButton!
 
     // Tableで使用する配列を設定する
-    private let myItems: NSArray = ["TEST1", "TEST2", "TEST3"]
-    private var myTableView: UITableView!
+    var sickName: [String] = ["がん","心筋梗塞","脳梗塞","肺炎","腎不全"]
+    var Symptom: [String] = ["やばい","苦しい","痺れる","せき，高熱","高血圧"]
+    var Cause: [String] = ["生活習慣の乱れ","喫煙，ストレス","食習慣","肺炎球菌","食習慣や運動不足"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //画面を表示
-        //self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.white
         
         //スクロール
         let scrollView = UIScrollView()
@@ -28,7 +34,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UIT
         scrollView.frame.size = CGSize(width: self.view.frame.width , height: self.view.frame.height - 200)
         scrollView.center = self.view.center
         // 中身の大きさを設定
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 3)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 5050)
         // スクロールの跳ね返り
         scrollView.bounces = false
         // スクロールバーの見た目と余白
@@ -36,23 +42,36 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UIT
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         // Delegate を設定
         scrollView.delegate = self
-        
+     
+    
         // ScrollViewの中身を作る
-        // Status Barの高さを取得する.
-        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        // Viewの高さと幅を取得する.
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
-        // TableViewの生成(Status barの高さをずらして表示).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight))
-        // Cell名の登録をおこなう.
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        // DataSourceを自身に設定する.
-        myTableView.dataSource = self
-        // Delegateを自身に設定する.
-        myTableView.delegate = self
-        // Viewに追加する.
-        scrollView.addSubview(myTableView)
+        //button生成
+        for i in 0...4{
+            colleButton = UIButton()
+            // ボタンのサイズ.
+            let bWidth: CGFloat = self.view.frame.width - 100
+            let bHeight: CGFloat = 200
+            // ボタンの設置座標とサイズを設定する.
+            colleButton.frame = CGRect(x: self.view.frame.width/2 - bWidth/2, y: CGFloat(50 + 250 * i) , width: bWidth, height: bHeight)
+            // ボタンの枠を丸くする.
+            colleButton.layer.masksToBounds = true
+            // コーナーの半径を設定する.
+            colleButton.layer.cornerRadius = 20.0
+            // ボタンの背景色を設定.
+            colleButton.backgroundColor = UIColor.red
+            // タイトルを設定する
+            colleButton.setTitle("No.\(String(i + 1))     \(sickName[i])", for: .normal)
+            colleButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+            colleButton.setTitleColor(UIColor.white, for: .normal)
+            // タイトルを設定する(ボタンがハイライトされた時).
+            colleButton.setTitleColor(UIColor.black, for: .highlighted)
+            // ボタンにタグをつける.
+            colleButton.tag = i + 1
+            // イベントを追加する
+            colleButton.addTarget(self, action: #selector(Collection.onClickMyButton(sender:)), for: .touchUpInside)
+            // ボタンをViewに追加.
+            scrollView.addSubview(colleButton)
+        }
         
         self.view.addSubview(scrollView)
         
@@ -65,7 +84,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UIT
         // UILabelに文字を代入.
         label.text = "病気図鑑"
         //文字サイズ
-        label.font = UIFont.systemFont(ofSize:30);
+        label.font = UIFont.systemFont(ofSize:30)
         // 文字の影をグレーに定義.
         label.shadowColor = UIColor.gray
         // Textを中央寄せにする.
@@ -86,13 +105,11 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UIT
         myTabBar.barTintColor = UIColor.lightGray
         //選択されていないボタンの色
         myTabBar.unselectedItemTintColor = UIColor.white
-        //ボタンを押した時の色
-        myTabBar.tintColor = UIColor.blue
         //ボタンを生成
-        let home:UITabBarItem = UITabBarItem(title: "ホーム", image: UIImage(named:"home2.png"), tag: 1)
-        let lib:UITabBarItem = UITabBarItem(title: "図鑑", image: UIImage(named:"book3.png"), tag: 2)
-        let calle:UITabBarItem = UITabBarItem(title: "カレンダー", image: UIImage(named:"cale.png"), tag: 3)
-        
+        let home:UITabBarItem = UITabBarItem(title: "ホーム", image: UIImage(named:"home2.png") , tag: 1)
+        //myTabBar.tintColor = UIColor.blue
+        let lib:UITabBarItem = UITabBarItem(title: "図鑑", image: UIImage(named:"book3.png")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), tag: 2)
+        let calle:UITabBarItem = UITabBarItem(title: "カレンダー", image: UIImage(named:"cale.png") , tag: 3)
         //ボタンをタブバーに配置する
         myTabBar.items = [home,lib,calle]
         //デリゲートを設定する
@@ -113,15 +130,18 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UIT
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag{
         case 1:
+            self.myWindow = nil;
             let myViewController: UIViewController = SecondViewController()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         case 2:
+            self.myWindow = nil;
             let myViewController: UIViewController = Collection()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         case 3:
-            let myViewController: UIViewController = calendar()// 遷移するViewを定義する.
+            self.myWindow = nil;
+            let myViewController: UIViewController = calendarView()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         default : return
@@ -129,31 +149,65 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate, UIT
         }
     }
     /*
-     Cellが選択された際に呼び出される
+     自作Windowを生成する
      */
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Num: \(indexPath.row)")
-        print("Value: \(myItems[indexPath.row])")
+    func makeMyWindow(s: Int){
+        myWindow = UIWindow()
+        myWindowButton = UIButton()
+        
+        // 背景を白に設定する.
+        myWindow.backgroundColor = UIColor.white
+        myWindow.frame = CGRect(x:0, y:0, width:400, height:450)
+        myWindow.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2)
+        myWindow.alpha = 0.8
+        myWindow.layer.cornerRadius = 20
+        
+        // myWindowをkeyWindowにする.
+        myWindow.makeKey()
+        
+        // windowを表示する.
+        self.myWindow.makeKeyAndVisible()
+        
+        // ボタンを作成する.
+        myWindowButton.frame = CGRect(x:0, y:0, width:100, height:60)
+        myWindowButton.backgroundColor = UIColor.orange
+        myWindowButton.setTitle("Close", for: .normal)
+        myWindowButton.setTitleColor(UIColor.white, for: .normal)
+        myWindowButton.layer.masksToBounds = true
+        myWindowButton.layer.cornerRadius = 20.0
+        myWindowButton.layer.position = CGPoint(x:self.myWindow.frame.width/2, y:self.myWindow.frame.height-50)
+        myWindowButton.addTarget(self, action: #selector(Collection.CloseButton(sender:)), for: .touchUpInside)
+        self.myWindow.addSubview(myWindowButton)
+        
+        // TextViewを作成する.
+        let myTextView: UITextView = UITextView(frame: CGRect(x:10, y:10, width:self.myWindow.frame.width - 20, height:150))
+        myTextView.backgroundColor = UIColor.white
+        myTextView.text = """
+        No.\(String(s))
+        病名:\(sickName[s - 1])
+        症状:\(Symptom[s - 1])
+        原因:\(Cause[s - 1])
+        """
+        myTextView.font = UIFont.systemFont(ofSize: 25)
+        myTextView.textColor = UIColor.black
+        myTextView.textAlignment = NSTextAlignment.left
+        myTextView.isEditable = false
+        
+        self.myWindow.addSubview(myTextView)
     }
     
     /*
-     Cellの総数を返す.
+     ボタンのイベント.
      */
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myItems.count
+    @objc internal func onClickMyButton(sender: UIButton) {
+        let s = sender.tag
+        makeMyWindow(s: s)
+        print("sender.tag: \(sender.tag)")
+        
     }
     
-    /*
-     Cellに値を設定する
-     */
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 再利用するCellを取得する.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        
-        // Cellに値を設定する.
-        cell.textLabel!.text = "\(myItems[indexPath.row])"
-        
-        return cell
+    @objc func CloseButton(sender: UIButton) {
+        myWindow.isHidden = true
     }
 
 
