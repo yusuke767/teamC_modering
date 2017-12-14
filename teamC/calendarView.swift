@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import FSCalendar
+//import FSCalendar
 
-class calendarView: UIViewController , UITabBarDelegate , FSCalendarDataSource , FSCalendarDelegate{
+class calendarView: UIViewController , UITabBarDelegate {
     private var myTabBar:MyTabBar!
-    fileprivate weak var calendar: FSCalendar!
+   // fileprivate weak var calendar: FSCalendar! , FSCalendarDataSource , FSCalendarDelegate
     private var coleView: UIView!
     
     override func viewDidLoad() {
@@ -36,14 +36,14 @@ class calendarView: UIViewController , UITabBarDelegate , FSCalendarDataSource ,
         label.textAlignment = NSTextAlignment.center
         // ViewにLabelを追加.
         self.view.addSubview(label)
-        
+    /*
     //カレンダー
         let calendar = FSCalendar(frame: CGRect(x:50, y: 100, width:self.view.frame.width - 100 , height: self.view.frame.height - 200))
         calendar.dataSource = self
         calendar.delegate = self
         view.addSubview(calendar)
         self.calendar = calendar
-        
+      */
        
         
         //tabbar
