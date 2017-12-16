@@ -16,6 +16,8 @@
 		FF28BB541FDAEB5400A7B31D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28BB501FDAEB5400A7B31D /* SecondViewController.swift */; };
 		FF28BB551FDAEB5400A7B31D /* calendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28BB511FDAEB5400A7B31D /* calendarView.swift */; };
 		FF28BB561FDAEB5400A7B31D /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28BB521FDAEB5400A7B31D /* Collection.swift */; };
+		FF3FB9A01FE56E7F00E7AF00 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3FB99F1FE56E7F00E7AF00 /* CalendarCell.swift */; };
+		FF3FB9A21FE56F2D00E7AF00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3FB9A11FE56F2D00E7AF00 /* DateManager.swift */; };
 		FF77C61D1FDBC2F9009DE662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77C61C1FDBC2F9009DE662 /* AppDelegate.swift */; };
 		FF77C61F1FDBC302009DE662 /* ももこ.png in Resources */ = {isa = PBXBuildFile; fileRef = FF77C61E1FDBC302009DE662 /* ももこ.png */; };
 		FF77C6211FDBC30A009DE662 /* home2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF77C6201FDBC30A009DE662 /* home2.png */; };
@@ -58,6 +60,8 @@
 		FF28BB501FDAEB5400A7B31D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		FF28BB511FDAEB5400A7B31D /* calendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendarView.swift; sourceTree = "<group>"; };
 		FF28BB521FDAEB5400A7B31D /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		FF3FB99F1FE56E7F00E7AF00 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		FF3FB9A11FE56F2D00E7AF00 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		FF77C61C1FDBC2F9009DE662 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF77C61E1FDBC302009DE662 /* ももこ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ももこ.png"; sourceTree = "<group>"; };
 		FF77C6201FDBC30A009DE662 /* home2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home2.png; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				FF28BB4F1FDAEB5400A7B31D /* ViewController.swift */,
 				FF28BB501FDAEB5400A7B31D /* SecondViewController.swift */,
 				FF28BB511FDAEB5400A7B31D /* calendarView.swift */,
+				FF3FB9A11FE56F2D00E7AF00 /* DateManager.swift */,
+				FF3FB99F1FE56E7F00E7AF00 /* CalendarCell.swift */,
 				FF28BB521FDAEB5400A7B31D /* Collection.swift */,
 				FFCC76DD1FD9A5A300F0312C /* MyTabBar.swift */,
 				B8A85E3C1FE220640090AACE /* CharacterHP.swift */,
@@ -315,6 +321,8 @@
 				B8A85E3D1FE220640090AACE /* CharacterHP.swift in Sources */,
 				FF28BB541FDAEB5400A7B31D /* SecondViewController.swift in Sources */,
 				FFCC76DE1FD9A5A300F0312C /* MyTabBar.swift in Sources */,
+				FF3FB9A21FE56F2D00E7AF00 /* DateManager.swift in Sources */,
+				FF3FB9A01FE56E7F00E7AF00 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
