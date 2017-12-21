@@ -26,6 +26,8 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         super.viewDidLoad()
         // 背景
         self.view.backgroundColor = UIColor.white
+        setBackgroundImage()
+
         // 画像を設定する.
         let myImage: UIImage = UIImage(named: "ももこ.png")!
         let imageWidth: CGFloat = 1241 / 3
@@ -125,6 +127,32 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         self.view.addSubview(myTabBar)
         
         
+    }
+    
+    //背景画像設定
+    func setBackgroundImage() {
+        var imageView:UIImageView!
+        // インスタンスの生成
+        let image = UIImage(named:"部屋背景.png")!
+        imageView = UIImageView(image:image)
+        //画面幅取得
+        let screenWidth:CGFloat = view.frame.size.width
+        let screenHeight:CGFloat = view.frame.size.height
+        // 画像の幅・高さの取得
+        let width:CGFloat = image.size.width
+        let height:CGFloat = image.size.height
+        // 画像サイズをスクリーン幅に合わせる
+        let scale:CGFloat = screenWidth / width
+        let rect:CGRect = CGRect(x:0, y:0, width:width*scale, height:height*scale)
+        // ImageView frame をCGRectで作った矩形に合わせる
+        imageView.frame = rect;
+        // 画像の中心を画面の中心に設定
+        imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
+        //画像をUIImageViewの左上に表示
+        self.view.contentMode = UIViewContentMode.topLeft
+        // 画像を追加し、最背面に設定
+        self.view.addSubview(imageView)
+        self.view.sendSubview(toBack:  imageView)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
