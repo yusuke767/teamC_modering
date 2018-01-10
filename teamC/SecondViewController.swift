@@ -131,6 +131,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     
     //背景画像設定
     func setBackgroundImage() {
+        /*
         var imageView:UIImageView!
         // インスタンスの生成
         let image = UIImage(named:"部屋背景.png")!
@@ -153,6 +154,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         // 画像を追加し、最背面に設定
         self.view.addSubview(imageView)
         self.view.sendSubview(toBack:  imageView)
+ */
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

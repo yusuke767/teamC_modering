@@ -39,9 +39,30 @@ class ViewController: UIViewController {
     }
     
     @objc func goNext(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = SecondViewController() // 遷移するViewを定義する.
-        nextvc.modalTransitionStyle = .crossDissolve
-        self.present(nextvc, animated: true, completion: nil)// Viewの移動する.
+        //すでにその日に睡眠時間を記録ずみならSecondVCへ、まだならInputSleepVCへ
+        let save_date = UserDefaults.standard
+        if (save_date.object(forKey: "date") == nil){
+            let nextvc = InputSleepViewController() // 遷移するViewを定義する.
+            nextvc.modalTransitionStyle = .crossDissolve
+            self.present(nextvc, animated: true, completion: nil)// Viewの移動する.
+        }
+        else {
+            let now = Date() // 現在日時の取得
+            let load_day:Date = save_date.object(forKey: "date") as! Date //保存した日時
+            let format = DateFormatter()
+            format.dateFormat = "yyyy/MM/dd"
+            print(load_day)
+            if (format.string(from: now) == format.string(from: load_day)){
+                let nextvc = SecondViewController() //遷移するViewを定義する.
+                nextvc.modalTransitionStyle = .crossDissolve
+                self.present(nextvc, animated: true, completion: nil)// Viewの移動する.
+            }
+            else {
+                let nextvc = InputSleepViewController() // 遷移するViewを定義する.
+                nextvc.modalTransitionStyle = .crossDissolve
+                self.present(nextvc, animated: true, completion: nil)// Viewの移動する.
+            }
+        }
     }
   
     override func didReceiveMemoryWarning() {
