@@ -143,8 +143,8 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         // 画像の幅・高さの取得
         let width:CGFloat = image.size.width
         let height:CGFloat = image.size.height
-        // 画像サイズをスクリーン幅に合わせる
-        let scale:CGFloat = screenWidth / width
+        // 画像サイズをスクリーン高さに合わせる
+        let scale:CGFloat = screenHeight / height
         let rect:CGRect = CGRect(x:0, y:0, width:width*scale, height:height*scale)
         // ImageView frame をCGRectで作った矩形に合わせる
         imageView.frame = rect;
