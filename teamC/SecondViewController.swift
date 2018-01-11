@@ -46,6 +46,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     //date表示
         dateLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
         dateLabel.layer.position = CGPoint(x: 200 , y: 100)
+        dateLabel.backgroundColor = UIColor.white
         //　ラベル枠の枠線太さと色
         dateLabel.layer.borderColor = UIColor.black.cgColor
         dateLabel.layer.borderWidth = 2
@@ -63,6 +64,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     //睡眠時間
         sleepLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
         sleepLabel.layer.position = CGPoint(x: 650 , y: 100)
+        sleepLabel.backgroundColor = UIColor.white
         //　ラベル枠の枠線太さと色
         sleepLabel.layer.borderColor = UIColor.black.cgColor
         sleepLabel.layer.borderWidth = 2
