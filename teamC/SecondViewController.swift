@@ -27,21 +27,9 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         // 背景
         self.view.backgroundColor = UIColor.white
         setBackgroundImage()
+        setCharacterImage("ももこ.png")
 
-        // 画像を設定する.
-        let myImage: UIImage = UIImage(named: "ももこ.png")!
-        let imageWidth: CGFloat = 1241 / 3
-        let imageHeight: CGFloat = 2105 / 3
-        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
-        let downPosY: CGFloat = 150
-        // 表示用のUIImageViewを生成.
-        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
-        // UIImageViewに画像を設定する.
-        myScaleDownView.image = myImage
-        // アフィン行列を生成する.
-        myScaleDownView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        // Viewに追加する.
-        self.view.addSubview(myScaleDownView)
+
         
     //date表示
         dateLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
@@ -129,6 +117,24 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         self.view.addSubview(myTabBar)
         
         
+    }
+    
+    //キャラクター画像設定
+    func setCharacterImage(_ character:String!){
+        // 画像を設定する.
+        let myImage: UIImage = UIImage(named:character)!
+        let imageWidth: CGFloat = 1241 / 3
+        let imageHeight: CGFloat = 2105 / 3
+        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let downPosY: CGFloat = 150
+        // 表示用のUIImageViewを生成.
+        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
+        // UIImageViewに画像を設定する.
+        myScaleDownView.image = myImage
+        // アフィン行列を生成する.
+        myScaleDownView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        // Viewに追加する.
+        self.view.addSubview(myScaleDownView)
     }
     
     //背景画像設定
