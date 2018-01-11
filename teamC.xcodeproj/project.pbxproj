@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B4B8E08E1FEB75B8009A9BC7 /* 部屋背景.png in Resources */ = {isa = PBXBuildFile; fileRef = B4B8E08D1FEB75B8009A9BC7 /* 部屋背景.png */; };
 		B8A85E3D1FE220640090AACE /* CharacterHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85E3C1FE220640090AACE /* CharacterHP.swift */; };
 		FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA801FD8557300451FB8 /* Assets.xcassets */; };
 		FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA821FD8557300451FB8 /* LaunchScreen.storyboard */; };
@@ -25,6 +24,7 @@
 		FF77C6231FDBC311009DE662 /* gia.png in Resources */ = {isa = PBXBuildFile; fileRef = FF77C6221FDBC311009DE662 /* gia.png */; };
 		FF77C6251FDBC319009DE662 /* cale.png in Resources */ = {isa = PBXBuildFile; fileRef = FF77C6241FDBC319009DE662 /* cale.png */; };
 		FF77C6271FDBC321009DE662 /* book3.png in Resources */ = {isa = PBXBuildFile; fileRef = FF77C6261FDBC321009DE662 /* book3.png */; };
+		FF94624D2006FAFD0019146D /* 部屋背景.png in Resources */ = {isa = PBXBuildFile; fileRef = FF94624C2006FAFD0019146D /* 部屋背景.png */; };
 		FFCC76DE1FD9A5A300F0312C /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC76DD1FD9A5A300F0312C /* MyTabBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B4B8E08D1FEB75B8009A9BC7 /* 部屋背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "部屋背景.png"; path = "../../../モデリング/部屋背景.png"; sourceTree = "<group>"; };
 		B8A85E3C1FE220640090AACE /* CharacterHP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHP.swift; sourceTree = "<group>"; };
 		FF0DBA761FD8557300451FB8 /* teamC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0DBA801FD8557300451FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		FF77C6221FDBC311009DE662 /* gia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gia.png; sourceTree = "<group>"; };
 		FF77C6241FDBC319009DE662 /* cale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cale.png; sourceTree = "<group>"; };
 		FF77C6261FDBC321009DE662 /* book3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book3.png; sourceTree = "<group>"; };
+		FF94624C2006FAFD0019146D /* 部屋背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "部屋背景.png"; path = "../../../../Downloads/部屋背景.png"; sourceTree = "<group>"; };
 		FFCC76DD1FD9A5A300F0312C /* MyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,7 +101,7 @@
 		B4B8E08C1FEB751F009A9BC7 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				B4B8E08D1FEB75B8009A9BC7 /* 部屋背景.png */,
+				FF94624C2006FAFD0019146D /* 部屋背景.png */,
 				FF77C6261FDBC321009DE662 /* book3.png */,
 				FF77C6241FDBC319009DE662 /* cale.png */,
 				FF77C6221FDBC311009DE662 /* gia.png */,
@@ -278,11 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF77C6271FDBC321009DE662 /* book3.png in Resources */,
-				B4B8E08E1FEB75B8009A9BC7 /* 部屋背景.png in Resources */,
 				FF77C61F1FDBC302009DE662 /* ももこ.png in Resources */,
 				FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */,
 				FF77C6251FDBC319009DE662 /* cale.png in Resources */,
 				FF77C6231FDBC311009DE662 /* gia.png in Resources */,
+				FF94624D2006FAFD0019146D /* 部屋背景.png in Resources */,
 				FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */,
 				FF77C6211FDBC30A009DE662 /* home2.png in Resources */,
 			);
