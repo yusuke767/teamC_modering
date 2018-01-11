@@ -27,6 +27,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         // 背景
         self.view.backgroundColor = UIColor.white
         setBackgroundImage()
+        //キャラクター表示
         setCharacterImage("ももこ.png")
 
 
@@ -120,6 +121,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     }
     
     //キャラクター画像設定
+    //引数に表示したい画像をいれる
     func setCharacterImage(_ character:String!){
         // 画像を設定する.
         let myImage: UIImage = UIImage(named:character)!
