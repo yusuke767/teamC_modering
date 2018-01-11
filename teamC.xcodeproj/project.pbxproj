@@ -69,7 +69,7 @@
 		FF77C6221FDBC311009DE662 /* gia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gia.png; sourceTree = "<group>"; };
 		FF77C6241FDBC319009DE662 /* cale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cale.png; sourceTree = "<group>"; };
 		FF77C6261FDBC321009DE662 /* book3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book3.png; sourceTree = "<group>"; };
-		FF94624C2006FAFD0019146D /* 部屋背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "部屋背景.png"; path = "../../../../Downloads/部屋背景.png"; sourceTree = "<group>"; };
+		FF94624C2006FAFD0019146D /* 部屋背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "部屋背景.png"; path = "teamC/image/部屋背景.png"; sourceTree = SOURCE_ROOT; };
 		FFCC76DD1FD9A5A300F0312C /* MyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
