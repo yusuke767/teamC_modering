@@ -30,8 +30,6 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         //キャラクター表示
         setCharacterImage("ももこ.png")
 
-
-        
     //date表示
         dateLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
         dateLabel.layer.position = CGPoint(x: 200 , y: 100)
@@ -123,20 +121,27 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     //キャラクター画像設定
     //引数に表示したい画像をいれる
     func setCharacterImage(_ character:String!){
+        var imageView:UIImageView!
         // 画像を設定する.
-        let myImage: UIImage = UIImage(named:character)!
-        let imageWidth: CGFloat = 1241 / 3
-        let imageHeight: CGFloat = 2105 / 3
-        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
-        let downPosY: CGFloat = 150
-        // 表示用のUIImageViewを生成.
-        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
-        // UIImageViewに画像を設定する.
-        myScaleDownView.image = myImage
-        // アフィン行列を生成する.
-        myScaleDownView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        // Viewに追加する.
-        self.view.addSubview(myScaleDownView)
+        let image = UIImage(named:character)!
+        imageView = UIImageView(image:image)
+        //画面幅取得
+        let screenWidth:CGFloat = view.frame.size.width
+        let screenHeight:CGFloat = view.frame.size.height
+        // 画像の幅・高さの取得
+        let width:CGFloat = image.size.width
+        let height:CGFloat = image.size.height
+        // 画像リサイズ
+        let scale:CGFloat = screenHeight / (height*1.2)
+        let rect:CGRect = CGRect(x:0, y:0, width:width*scale, height:height*scale)
+        // ImageView frame をCGRectで作った矩形に合わせる
+        imageView.frame = rect;
+        // 画像の中心設定
+        imageView.center = CGPoint(x:screenWidth/2, y:screenHeight*3/5)
+        //画像をUIImageViewの左上に表示
+        self.view.contentMode = UIViewContentMode.topLeft
+        // 画像を追加
+        self.view.addSubview(imageView)
     }
     
     //背景画像設定
