@@ -1,5 +1,5 @@
 //
-//  HP.swift
+//  CharacterHP.swift
 //  teamC
 //
 //  Created by Hirotake Tomiyama on 2017/12/14.
@@ -26,7 +26,7 @@ class CharacterHP {
             hit_point = hit_point - (per_time * n)
         } else if per_time >= 1 {
             //睡眠時間が多ければ経験値を増やす
-            exp_point = exp_point + per_time
+            exp_point = exp_point + (per_time * n)
         }
     }
 }
