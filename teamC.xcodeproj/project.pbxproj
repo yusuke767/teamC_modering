@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B81DAA53201976A2007CCFF1 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DAA52201976A1007CCFF1 /* FileWrite.swift */; };
 		B8A85E3D1FE220640090AACE /* CharacterHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85E3C1FE220640090AACE /* CharacterHP.swift */; };
 		FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA801FD8557300451FB8 /* Assets.xcassets */; };
 		FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA821FD8557300451FB8 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B81DAA52201976A1007CCFF1 /* FileWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWrite.swift; sourceTree = "<group>"; };
 		B8A85E3C1FE220640090AACE /* CharacterHP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHP.swift; sourceTree = "<group>"; };
 		FF0DBA761FD8557300451FB8 /* teamC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0DBA801FD8557300451FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		FF0DBA781FD8557300451FB8 /* teamC */ = {
 			isa = PBXGroup;
 			children = (
+				B81DAA52201976A1007CCFF1 /* FileWrite.swift */,
 				FF77C61C1FDBC2F9009DE662 /* AppDelegate.swift */,
 				FF28BB4F1FDAEB5400A7B31D /* ViewController.swift */,
 				FF28BB501FDAEB5400A7B31D /* SecondViewController.swift */,
@@ -335,6 +338,7 @@
 				FFCC76DE1FD9A5A300F0312C /* MyTabBar.swift in Sources */,
 				FF3FB9A21FE56F2D00E7AF00 /* DateManager.swift in Sources */,
 				FF3FB9A01FE56E7F00E7AF00 /* CalendarCell.swift in Sources */,
+				B81DAA53201976A2007CCFF1 /* FileWrite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
