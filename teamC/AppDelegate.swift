@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  teamC
 //
-//  Created by 河野佑亮 on 2017/12/07.
+//  Created by 河野佑亮 on 2017/12/07
 //  Copyright © 2017年 河野佑亮. All rights reserved.
 //
 
