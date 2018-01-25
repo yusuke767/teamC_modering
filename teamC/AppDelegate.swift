@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("aaa")
         let suimin = Filewrite()
-        application.cancelAllLocalNotifications()
-        
-        suimin.a()
         
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -50,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.scheduleLocalNotification(notification)
         var i = 0
         var count = 1
-        counter = 0
         while i == 0 {
             if count%100000000 == 0{
                 let date = NSDate()
