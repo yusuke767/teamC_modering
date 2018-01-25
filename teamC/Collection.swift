@@ -179,7 +179,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         self.myWindow.addSubview(myWindowButton)
         
         // TextViewを作成する.
-        let myTextView: UITextView = UITextView(frame: CGRect(x:10, y:10, width:self.myWindow.frame.width - 20, height:150))
+        let myTextView: UITextView = UITextView(frame: CGRect(x:10, y:10, width:self.myWindow.frame.width - 20, height:350))
         myTextView.backgroundColor = UIColor.white
         myTextView.text = """
         No.\(String(s))
