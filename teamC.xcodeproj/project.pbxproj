@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B4C38ED220197B6F00DA3351 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C38ED120197B6F00DA3351 /* AudioToolbox.framework */; };
+		B4C38ED520197C5400DA3351 /* hyposomniac_nightmere.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4C38ED420197C5400DA3351 /* hyposomniac_nightmere.mp3 */; };
 		B81DAA53201976A2007CCFF1 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DAA52201976A1007CCFF1 /* FileWrite.swift */; };
 		B8A85E3D1FE220640090AACE /* CharacterHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85E3C1FE220640090AACE /* CharacterHP.swift */; };
 		FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA801FD8557300451FB8 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		B4C38ED120197B6F00DA3351 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B4C38ED420197C5400DA3351 /* hyposomniac_nightmere.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hyposomniac_nightmere.mp3; sourceTree = "<group>"; };
 		B81DAA52201976A1007CCFF1 /* FileWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWrite.swift; sourceTree = "<group>"; };
 		B8A85E3C1FE220640090AACE /* CharacterHP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHP.swift; sourceTree = "<group>"; };
 		FF0DBA761FD8557300451FB8 /* teamC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B4C38ED320197C2D00DA3351 /* BGMSE */ = {
+			isa = PBXGroup;
+			children = (
+				B4C38ED420197C5400DA3351 /* hyposomniac_nightmere.mp3 */,
+			);
+			path = BGMSE;
+			sourceTree = "<group>";
+		};
 		FF0DBA6D1FD8557300451FB8 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +161,7 @@
 				B81DAA52201976A1007CCFF1 /* FileWrite.swift */,
 				FF77C61C1FDBC2F9009DE662 /* AppDelegate.swift */,
 				FF28BB4F1FDAEB5400A7B31D /* ViewController.swift */,
+				B4C38ED320197C2D00DA3351 /* BGMSE */,
 				FF28BB501FDAEB5400A7B31D /* SecondViewController.swift */,
 				FF28BB511FDAEB5400A7B31D /* calendarView.swift */,
 				FF3FB9A11FE56F2D00E7AF00 /* DateManager.swift */,
@@ -294,6 +305,7 @@
 			files = (
 				FF77C6271FDBC321009DE662 /* book3.png in Resources */,
 				FF77C61F1FDBC302009DE662 /* ももこ.png in Resources */,
+				B4C38ED520197C5400DA3351 /* hyposomniac_nightmere.mp3 in Resources */,
 				FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */,
 				FF77C6251FDBC319009DE662 /* cale.png in Resources */,
 				FF77C6231FDBC311009DE662 /* gia.png in Resources */,
