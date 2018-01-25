@@ -16,10 +16,9 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
     private var myWindowButton: UIButton!
 
     // Tableで使用する配列を設定する
-    var sickName: [String] = ["がん","心筋梗塞","脳梗塞","肺炎","腎不全"]
-    var Symptom: [String] = ["やばい","苦しい","痺れる","せき，高熱","高血圧"]
-    var Cause: [String] = ["生活習慣の乱れ","喫煙，ストレス","食習慣","肺炎球菌","食習慣や運動不足"]
-    
+    var sickName: [String] = ["乳がん(癌)","下痢","鬱","肺炎","睡眠時無呼吸症候群"]     //病名
+    var Symptom: [String] = ["乳房のしこり、他の癌への転移、そして死亡。。。","下痢による脱水症状で最悪の場合死に至る","鬱により人間不信や自殺願望が芽生える可能性がある","長い期間咳が続き高熱になる","睡眠中窒息の状態が続く"]   //症状
+    var Cause: [String] = ["睡眠不足により癌を倒す免疫細胞が眠った状態になり癌のリスクを高める","内臓の働きが寝不足により不規則になる","寝不足による精神的不安定な状況に陥る","睡眠不足による免疫力の低下が原因","睡眠時間の乱れによる食習慣の悪影響や運動不足"] //原因
     
     override func viewDidLoad() {
         super.viewDidLoad()
