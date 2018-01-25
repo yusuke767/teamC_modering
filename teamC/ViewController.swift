@@ -12,12 +12,14 @@ import AVFoundation
 import AudioToolbox
 
 class ViewController: UIViewController {
-
+    var audioPlayer: AVAudioPlayer!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // 背景
         self.view.backgroundColor = UIColor.white
+        //BGM
+        setSystemSound("hyposomniac_nightmere")
         //ラベル
         let label = UILabel()
         label.text = "アプリ名"
@@ -39,6 +41,28 @@ class ViewController: UIViewController {
         nextbutton.addTarget(self, action: #selector(ViewController.goNext(_:)), for: .touchUpInside)
         //nextbutton.sizeToFit()
         self.view.addSubview(nextbutton)
+    }
+    
+    func setSystemSound(_ BGM:String?) {
+        // サウンドデータの読み込み。ファイル名は引数。拡張子は"mp3"
+        let audioPath = NSURL(fileURLWithPath: Bundle.main.path(forResource: BGM, ofType: "mp3")!)
+        
+        // swift2系からtryでエラー処理するようなので、do〜try〜catchで対応
+        do {
+            // AVAudioPlayerを作成。もし何かの事情で作成できなかったらエラーがthrowされる
+            audioPlayer = try AVAudioPlayer(contentsOf: audioPath as URL)
+            
+            // イベントを通知したいUIViewControllerをdelegateに登録
+            // delegateの登録するならAVAudioPlayerDelegateプロトコルの継承が必要
+            audioPlayer.delegate = self as? AVAudioPlayerDelegate
+            
+            // これで再生
+            audioPlayer.play()
+        }
+            // playerを作成した時にエラーがthrowされたらこっち来る
+        catch {
+            print("AVAudioPlayer error")
+        }
     }
     
     @objc func goNext(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
