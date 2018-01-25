@@ -24,10 +24,15 @@ class CharacterHP {
             //睡眠時間が基準より少ないとHPを減らす
             per_time = 1 - per_time
             hit_point = hit_point - (per_time * n)
+            
         } else if per_time >= 1 {
             //睡眠時間が基準より多ければ好感度を増やす
             exp_point = exp_point + 1
         }
+        
+        //体力をテキストファイルに書き込む.
+        
+        
     }
 }
 
