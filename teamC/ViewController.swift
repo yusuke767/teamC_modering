@@ -47,10 +47,13 @@ class ViewController: UIViewController {
         // サウンドデータの読み込み。ファイル名は引数。拡張子は"mp3"
         let audioPath = NSURL(fileURLWithPath: Bundle.main.path(forResource: BGM, ofType: "mp3")!)
         
-        // swift2系からtryでエラー処理するようなので、do〜try〜catchで対応
+        // tryでエラー処理
         do {
             // AVAudioPlayerを作成。もし何かの事情で作成できなかったらエラーがthrowされる
             audioPlayer = try AVAudioPlayer(contentsOf: audioPath as URL)
+            
+            audioPlayer.numberOfLoops = -1   // ループ再生する
+            audioPlayer.prepareToPlay()      // 即時再生させる
             
             // イベントを通知したいUIViewControllerをdelegateに登録
             // delegateの登録するならAVAudioPlayerDelegateプロトコルの継承が必要
