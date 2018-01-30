@@ -17,14 +17,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // 背景
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.black
         setBackgroundImage()
         //BGM
         setSystemSound("hyposomniac_nightmere")
         //ロゴ
         setLogo()
         let screenbutton: UIButton = UIButton(frame: CGRect(x: 0,y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        // ボタンの位置を指定する.
+        
+        // 画面全体をボタンに
         screenbutton.center = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2)
         screenbutton.backgroundColor = UIColor.clear //色
         screenbutton.layer.masksToBounds = true// ボタンを押していないときの設定
@@ -33,7 +34,6 @@ class ViewController: UIViewController {
         self.view.addSubview(screenbutton)
         
         //文字表示
-        // ボタンのサイズを定義.
         let bWidth: CGFloat = self.view.bounds.width
         let bHeight: CGFloat = 100
         // 配置する座標を定義
