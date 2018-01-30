@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B4C38ED220197B6F00DA3351 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C38ED120197B6F00DA3351 /* AudioToolbox.framework */; };
 		B4C38ED920199A9700DA3351 /* hyposomniac_nightmere.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4C38ED820199A9700DA3351 /* hyposomniac_nightmere.mp3 */; };
+		B4D2A4762020A9E400DEFA1B /* titleback.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D2A4752020A9E400DEFA1B /* titleback.png */; };
+		B4D2A4782020A9EC00DEFA1B /* titlelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D2A4772020A9EC00DEFA1B /* titlelogo.png */; };
 		B81DAA53201976A2007CCFF1 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DAA52201976A1007CCFF1 /* FileWrite.swift */; };
 		B8A85E3D1FE220640090AACE /* CharacterHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85E3C1FE220640090AACE /* CharacterHP.swift */; };
 		FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA801FD8557300451FB8 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		B4C38ED120197B6F00DA3351 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B4C38ED820199A9700DA3351 /* hyposomniac_nightmere.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hyposomniac_nightmere.mp3; sourceTree = "<group>"; };
+		B4D2A4752020A9E400DEFA1B /* titleback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleback.png; sourceTree = "<group>"; };
+		B4D2A4772020A9EC00DEFA1B /* titlelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlelogo.png; sourceTree = "<group>"; };
 		B81DAA52201976A1007CCFF1 /* FileWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWrite.swift; sourceTree = "<group>"; };
 		B8A85E3C1FE220640090AACE /* CharacterHP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHP.swift; sourceTree = "<group>"; };
 		FF0DBA761FD8557300451FB8 /* teamC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,8 @@
 		B4B8E08C1FEB751F009A9BC7 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				B4D2A4772020A9EC00DEFA1B /* titlelogo.png */,
+				B4D2A4752020A9E400DEFA1B /* titleback.png */,
 				FF94624C2006FAFD0019146D /* 部屋背景.png */,
 				FF77C6261FDBC321009DE662 /* book3.png */,
 				FF77C6241FDBC319009DE662 /* cale.png */,
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF77C6271FDBC321009DE662 /* book3.png in Resources */,
+				B4D2A4762020A9E400DEFA1B /* titleback.png in Resources */,
 				FF77C61F1FDBC302009DE662 /* ももこ.png in Resources */,
 				FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */,
 				FF77C6251FDBC319009DE662 /* cale.png in Resources */,
@@ -312,6 +319,7 @@
 				FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */,
 				B4C38ED920199A9700DA3351 /* hyposomniac_nightmere.mp3 in Resources */,
 				FF77C6211FDBC30A009DE662 /* home2.png in Resources */,
+				B4D2A4782020A9EC00DEFA1B /* titlelogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
