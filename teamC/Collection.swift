@@ -24,11 +24,11 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         super.viewDidLoad()
         
         //画面を表示
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.black
         
         //スクロール
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = UIColor.white
+        scrollView.backgroundColor = UIColor.black
         // 表示窓のサイズと位置を設定
         scrollView.frame.size = CGSize(width: self.view.frame.width , height: self.view.frame.height - 200)
         scrollView.center = self.view.center
@@ -77,7 +77,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         // Labelを作成.
         let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
         // UILabelの背景をオレンジ色に.
-        label.backgroundColor = UIColor.orange
+        label.backgroundColor = UIColor.red
         // 文字の色を白に定義.
         label.textColor = UIColor.white
         // UILabelに文字を代入.
