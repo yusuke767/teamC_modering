@@ -81,7 +81,7 @@ class Filewrite{
             let file_path = documentsPath + "/睡眠時間.txt"
             print(file_path)
             //"/Users/e165703/モデリングC/睡眠時間.txt"普通のパス
-            try date_String.write(toFile: "/Users/e165703/モデリングC/睡眠時間.txt", atomically: true, encoding: String.Encoding.utf8)
+            try date_String.write(toFile: file_path, atomically: true, encoding: String.Encoding.utf8)
         }
         catch{
             print("error")
