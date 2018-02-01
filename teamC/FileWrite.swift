@@ -76,7 +76,7 @@ class Filewrite{
             let suimin_second2 = (suimin_second%3600)%60
             var date_String = String(format: "%2d %2d %02d %02d %02d \n",comps.month!,comps.day!,suimin_hour,suimin_minute,suimin_second2)
             
-            
+            print(date_String)
             let documentsPath = NSHomeDirectory() + "/Documents"
             let file_path = documentsPath + "/睡眠時間.txt"
             print(file_path)
