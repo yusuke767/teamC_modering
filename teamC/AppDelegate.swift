@@ -34,6 +34,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
+        //1日1回起動するように
+        let userDefaults = UserDefaults.standard
+        //0時に"key"のリセット
+        let now = NSDate()
+        let data = DateFormatter()
+        data.dateFormat = "HH:mm:ss"
+        let now_time = data.string(from: now as Date)
+        let now_str : String = String(now_time)
+        
+        if "00:00:00" < now_str {
+            UserDefaults.standard.set(true, forKey: "key")
+        }
+        
+        if UserDefaults.standard.bool(forKey: "key") {
+            userDefaults.set(false, forKey: "key")
+            let tairyoku : CharacterHP = CharacterHP()
+            tairyoku.CharaHP()
+            //print("bbb")
+            
+        }
+        
+        
+        do {
+            let text = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", encoding: String.Encoding.utf8 )
+            print("体力")
+            print(text)
+            let text2 = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", encoding: String.Encoding.utf8 )
+            print("好感度")
+            print(text2)
+        } catch {
+            print("エラー")
+        }
+        
+        
+        
         return true
     }
     

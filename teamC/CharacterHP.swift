@@ -8,30 +8,57 @@
 
 import UIKit
 
-let stand_sleep_time: Float = 7.5 //目安となる睡眠時間(7時間30分)
-var sleep_time: Float = 1         //睡眠時間
-var hit_point: Float = 100        //HP
-var per_time: Float = 0
-var exp_point: Float = 0          //好感度
-let n: Float = 100                // パーセント
-
-
-
 class CharacterHP {
-    func HP(sleep: Float){
-        per_time = sleep_time / stand_sleep_time
-        if per_time < 1 {
-            //睡眠時間が基準より少ないとHPを減らす
-            per_time = 1 - per_time
-            hit_point = hit_point - (per_time * n)
+    func CharaHP(){
+        
+        let sleep_time: Float = 1         //睡眠時間
+        let stand_sleep_time: Float = 7.5 //目安となる睡眠時間(7時間30分)
+        var hit_point: Float = 0          //体力
+        var exp_point: Float = 0          //好感度
+        var per_time: Float = 0
+        
+        do {
+            //体力読み込み
+            let tairyoku = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", encoding: String.Encoding.utf8 )
+            hit_point = Float(tairyoku)!
+            //好感度読み込み
+            let koukando = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", encoding: String.Encoding.utf8 )
+            exp_point = Float(koukando)!
             
-        } else if per_time >= 1 {
-            //睡眠時間が基準より多ければ好感度を増やす
-            exp_point = exp_point + 1
+            //体力が0以下ならリセット
+            if hit_point <= 0 {
+                hit_point = 100
+                exp_point = 0
+            } else {
+                per_time = sleep_time / stand_sleep_time
+                
+                if per_time < 1 {
+                    //睡眠時間が基準より少ないとHPを減らす
+                    per_time = 1 - per_time
+                    hit_point = hit_point - (per_time * 100)
+                    //print("xxx")
+                } else if per_time >= 1 {
+                    //睡眠時間が基準より多ければ好感度を増やす
+                    exp_point = exp_point + 1
+                    //print("vvv")
+                }
+                
+            }
+            
+            //体力をテキストファイルに書き込む.
+            let hit_point_str : String = String(hit_point)
+            let exp_point_str : String = String(exp_point)
+            
+            
+            try hit_point_str.write(toFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", atomically: true, encoding: String.Encoding.utf8)
+            //print(hit_point_str)
+            
+            try exp_point_str.write(toFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", atomically: true, encoding: String.Encoding.utf8)
+            //print(exp_point_str)
+            
+        } catch {
+            print("エラー")
         }
-        
-        //体力をテキストファイルに書き込む.
-        
         
     }
 }
