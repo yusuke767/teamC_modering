@@ -12,6 +12,8 @@
 		B4D2A4762020A9E400DEFA1B /* titleback.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D2A4752020A9E400DEFA1B /* titleback.png */; };
 		B4D2A4782020A9EC00DEFA1B /* titlelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D2A4772020A9EC00DEFA1B /* titlelogo.png */; };
 		B81DAA53201976A2007CCFF1 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DAA52201976A1007CCFF1 /* FileWrite.swift */; };
+		B857CB132029E20400BB7012 /* 好感度.txt in Resources */ = {isa = PBXBuildFile; fileRef = B857CB112029E20400BB7012 /* 好感度.txt */; };
+		B857CB142029E20400BB7012 /* 体力.txt in Resources */ = {isa = PBXBuildFile; fileRef = B857CB122029E20400BB7012 /* 体力.txt */; };
 		B8A85E3D1FE220640090AACE /* CharacterHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85E3C1FE220640090AACE /* CharacterHP.swift */; };
 		FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA801FD8557300451FB8 /* Assets.xcassets */; };
 		FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0DBA821FD8557300451FB8 /* LaunchScreen.storyboard */; };
@@ -56,6 +58,8 @@
 		B4D2A4752020A9E400DEFA1B /* titleback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleback.png; sourceTree = "<group>"; };
 		B4D2A4772020A9EC00DEFA1B /* titlelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlelogo.png; sourceTree = "<group>"; };
 		B81DAA52201976A1007CCFF1 /* FileWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWrite.swift; sourceTree = "<group>"; };
+		B857CB112029E20400BB7012 /* 好感度.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "好感度.txt"; sourceTree = "<group>"; };
+		B857CB122029E20400BB7012 /* 体力.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "体力.txt"; sourceTree = "<group>"; };
 		B8A85E3C1FE220640090AACE /* CharacterHP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHP.swift; sourceTree = "<group>"; };
 		FF0DBA761FD8557300451FB8 /* teamC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0DBA801FD8557300451FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +144,15 @@
 			path = BGMSE;
 			sourceTree = "<group>";
 		};
+		B857CB152029E22200BB7012 /* TXT */ = {
+			isa = PBXGroup;
+			children = (
+				B857CB122029E20400BB7012 /* 体力.txt */,
+				B857CB112029E20400BB7012 /* 好感度.txt */,
+			);
+			path = TXT;
+			sourceTree = "<group>";
+		};
 		FF0DBA6D1FD8557300451FB8 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +187,7 @@
 				FF28BB521FDAEB5400A7B31D /* Collection.swift */,
 				FFCC76DD1FD9A5A300F0312C /* MyTabBar.swift */,
 				B8A85E3C1FE220640090AACE /* CharacterHP.swift */,
+				B857CB152029E22200BB7012 /* TXT */,
 				B4C38ED320197C2D00DA3351 /* BGMSE */,
 				B4B8E08C1FEB751F009A9BC7 /* image */,
 				FF0DBA801FD8557300451FB8 /* Assets.xcassets */,
@@ -309,9 +323,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B857CB142029E20400BB7012 /* 体力.txt in Resources */,
 				FF77C6271FDBC321009DE662 /* book3.png in Resources */,
 				B4D2A4762020A9E400DEFA1B /* titleback.png in Resources */,
 				FF77C61F1FDBC302009DE662 /* ももこ.png in Resources */,
+				B857CB132029E20400BB7012 /* 好感度.txt in Resources */,
 				FF0DBA841FD8557300451FB8 /* LaunchScreen.storyboard in Resources */,
 				FF77C6251FDBC319009DE662 /* cale.png in Resources */,
 				FF77C6231FDBC311009DE662 /* gia.png in Resources */,

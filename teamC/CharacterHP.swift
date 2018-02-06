@@ -19,10 +19,10 @@ class CharacterHP {
         
         do {
             //体力読み込み
-            let tairyoku = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", encoding: String.Encoding.utf8 )
+            let tairyoku = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/TXT/体力.txt", encoding: String.Encoding.utf8 )
             hit_point = Float(tairyoku)!
             //好感度読み込み
-            let koukando = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", encoding: String.Encoding.utf8 )
+            let koukando = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/TXT/好感度.txt", encoding: String.Encoding.utf8 )
             exp_point = Float(koukando)!
             
             //体力が0以下ならリセット
@@ -50,10 +50,10 @@ class CharacterHP {
             let exp_point_str : String = String(exp_point)
             
             
-            try hit_point_str.write(toFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", atomically: true, encoding: String.Encoding.utf8)
+            try hit_point_str.write(toFile: "/Users/e155748/Desktop/teamC_modering/teamC/TXT/体力.txt", atomically: true, encoding: String.Encoding.utf8)
             //print(hit_point_str)
             
-            try exp_point_str.write(toFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", atomically: true, encoding: String.Encoding.utf8)
+            try exp_point_str.write(toFile: "/Users/e155748/Desktop/teamC_modering/teamC/TXT/好感度.txt", atomically: true, encoding: String.Encoding.utf8)
             //print(exp_point_str)
             
         } catch {
