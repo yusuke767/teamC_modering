@@ -57,12 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         do {
-            let text = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", encoding: String.Encoding.utf8 )
+            //体力の数値を"CharaHP"に保存
+            let CharaHP = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/体力.txt", encoding: String.Encoding.utf8 )
             print("体力")
-            print(text)
-            let text2 = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", encoding: String.Encoding.utf8 )
+            print(CharaHP)
+            //好感度の数値を"CharaEXP"に保存
+            let CharaEXP = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/好感度.txt", encoding: String.Encoding.utf8 )
             print("好感度")
-            print(text2)
+            print(CharaEXP)
         } catch {
             print("エラー")
         }
