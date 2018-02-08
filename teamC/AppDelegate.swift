@@ -55,14 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        
+        //ファイルパス
+        let documentsPath = NSHomeDirectory() + "/Documents"
+        let file_path = documentsPath + "/体力.txt"
+        let file_path_2 = documentsPath + "/好感度.txt"
         do {
             //体力の数値を"CharaHP"に保存
-            let CharaHP = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/TXT/体力.txt", encoding: String.Encoding.utf8 )
+            let CharaHP = try String( contentsOfFile: file_path, encoding: String.Encoding.utf8 )
             print("体力")
             print(CharaHP)
             //好感度の数値を"CharaEXP"に保存
-            let CharaEXP = try String( contentsOfFile: "/Users/e155748/Desktop/teamC_modering/teamC/TXT/好感度.txt", encoding: String.Encoding.utf8 )
+            let CharaEXP = try String( contentsOfFile: file_path_2, encoding: String.Encoding.utf8 )
             print("好感度")
             print(CharaEXP)
         } catch {
