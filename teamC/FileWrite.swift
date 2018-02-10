@@ -18,6 +18,10 @@ class Filewrite{
         let d: String = String(b)
         do {
             try d.write(toFile: "/Users/e165703/モデリングC/slept_time.txt", atomically: true, encoding: String.Encoding.utf8)
+            //-----------テスト用
+            let path_slept = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/slept_time.txt"
+            try d.write(toFile: path_slept, atomically: true, encoding: String.Encoding.utf8)
+            //-----------
         } catch {
             print("aaa")
             // Failed to write file
@@ -82,6 +86,10 @@ class Filewrite{
             print(file_path)
             //"/Users/e165703/モデリングC/睡眠時間.txt"普通のパス
             try date_String.write(toFile: file_path, atomically: true, encoding: String.Encoding.utf8)
+            //------------テスト用
+            let path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
+            try date_String.write(toFile: path_suimin, atomically: true, encoding: String.Encoding.utf8)
+            //------------
         }
         catch{
             print("error")

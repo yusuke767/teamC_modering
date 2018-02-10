@@ -34,43 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
+        /*
         //1日1回起動するように
         let userDefaults = UserDefaults.standard
-        //0時に"key"のリセット
-        let now = NSDate()
-        let data = DateFormatter()
-        data.dateFormat = "HH:mm:ss"
-        let now_time = data.string(from: now as Date)
-        let now_str : String = String(now_time)
-        
-        if "00:00:00" < now_str {
-            UserDefaults.standard.set(true, forKey: "key")
-        }
-        
         if UserDefaults.standard.bool(forKey: "key") {
             userDefaults.set(false, forKey: "key")
             let tairyoku : CharacterHP = CharacterHP()
             tairyoku.CharaHP()
-            //print("bbb")
-            
         }
-        
-        //ファイルパス
-        let documentsPath = NSHomeDirectory() + "/Documents"
-        let file_path = documentsPath + "/体力.txt"
-        let file_path_2 = documentsPath + "/好感度.txt"
-        do {
-            //体力の数値を"CharaHP"に保存
-            let CharaHP = try String( contentsOfFile: file_path, encoding: String.Encoding.utf8 )
-            print("体力")
-            print(CharaHP)
-            //好感度の数値を"CharaEXP"に保存
-            let CharaEXP = try String( contentsOfFile: file_path_2, encoding: String.Encoding.utf8 )
-            print("好感度")
-            print(CharaEXP)
-        } catch {
-            print("エラー")
-        }
+        */
         
         
         
@@ -101,9 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let calendarComponents = calendar.components(.hour, from: date as Date)
         let hour = calendarComponents.hour
         
+        let tairyoku : CharacterHP = CharacterHP()
+        
         if 4 < hour! && hour! <= 12 {
             if count == 0{
                 suimin_2.sleep_time()
+                tairyoku.CharaHP()
             }
             count += 1
         }
@@ -120,6 +95,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("aaa")
                 // Failed to write file
             }
+        }
+        
+        //ファイルパス
+        let documentsPath = NSHomeDirectory() + "/Documents"
+        let file_path = documentsPath + "/体力.txt"
+        let file_path_2 = documentsPath + "/好感度.txt"
+        do {
+            //体力の数値を"CharaHP"に保存
+            let CharaHP = try String( contentsOfFile: file_path, encoding: String.Encoding.utf8 )
+            print("体力\(CharaHP)")
+            //好感度の数値を"CharaEXP"に保存
+            let CharaEXP = try String( contentsOfFile: file_path_2, encoding: String.Encoding.utf8 )
+            print("好感度\(CharaEXP)")
+        } catch {
+            print("エラー")
         }
     }
 
