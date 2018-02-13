@@ -34,18 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
-        /*
-        //1日1回起動するように
-        let userDefaults = UserDefaults.standard
-        if UserDefaults.standard.bool(forKey: "key") {
-            userDefaults.set(false, forKey: "key")
-            let tairyoku : CharacterHP = CharacterHP()
-            tairyoku.CharaHP()
-        }
-        */
-        
-        
-        
         return true
     }
     

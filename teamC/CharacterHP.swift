@@ -19,7 +19,7 @@ class CharacterHP {
         let documentsPath = NSHomeDirectory() + "/Documents"
         let file_path_HP = documentsPath + "/体力.txt"
         let file_path_EXP = documentsPath + "/好感度.txt"
-        //let file_path_suimin = documentsPath + "/睡眠時間.txt"
+        let file_path_suimin = documentsPath + "/睡眠時間.txt"
         
         do {
             //体力読み込み
@@ -29,18 +29,22 @@ class CharacterHP {
             let koukando = try String( contentsOfFile: file_path_EXP, encoding: String.Encoding.utf8 )
             exp_point = Float(koukando)!
             //睡眠時間読み込み
-            let file_path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
+            //let file_path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
             let text = try String( contentsOfFile: file_path_suimin, encoding: String.Encoding.utf8 )
             let suimin = text.components(separatedBy: " ")
+            print("suimin:\(suimin)")
             
             //時
             var suimin_hour: Int = Int(suimin[3])!
+            print("suimin:\(suimin_hour)")
             suimin_hour = suimin_hour*60*60
             //分
             var suimin_minute: Int = Int(suimin[4])!
+            print("suimin:\(suimin_minute)")
             suimin_minute = suimin_minute*60
             //秒
             let suimin_second: Int = Int(suimin[5])!
+            print("suimin:\(suimin_second)")
             //睡眠時間合計・秒
             let suimin_all = suimin_hour+suimin_minute+suimin_second
             let sleep_time_float = Float(suimin_all)
