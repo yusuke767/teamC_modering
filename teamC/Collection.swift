@@ -30,10 +30,10 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.black
         // 表示窓のサイズと位置を設定
-        scrollView.frame.size = CGSize(width: self.view.frame.width , height: self.view.frame.height - 200)
+        scrollView.frame.size = CGSize(width: self.view.frame.width , height: self.view.frame.height / 1.22)
         scrollView.center = self.view.center
         // 中身の大きさを設定
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 5050)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 4.54)
         // スクロールの跳ね返り
         scrollView.bounces = false
         // スクロールバーの見た目と余白
@@ -48,10 +48,15 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         for i in 0...4{
             colleButton = UIButton()
             // ボタンのサイズ.
-            let bWidth: CGFloat = self.view.frame.width - 100
-            let bHeight: CGFloat = 200
+            let bWidth: CGFloat = self.view.frame.width / 1.14
+            let bHeight: CGFloat = self.view.frame.height / 5.56
+            let hhh  = self.view.frame.height / 22.24
+            let ddd  = self.view.frame.height / 4.448
+            let bupo = hhh + ddd * CGFloat(i)
+            //print( "CGFloat (50 + 250 * i)")
+            //print( bupo)
             // ボタンの設置座標とサイズを設定する.
-            colleButton.frame = CGRect(x: self.view.frame.width/2 - bWidth/2, y: CGFloat(50 + 250 * i) , width: bWidth, height: bHeight)
+            colleButton.frame = CGRect(x: self.view.frame.width/2 - bWidth/2, y: CGFloat(bupo) , width: bWidth, height: bHeight)
             // ボタンの枠を丸くする.
             colleButton.layer.masksToBounds = true
             // コーナーの半径を設定する.
@@ -60,7 +65,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
             colleButton.backgroundColor = UIColor.red
             // タイトルを設定する
             colleButton.setTitle("No.\(String(i + 1))     \(sickName[i])", for: .normal)
-            colleButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+            colleButton.titleLabel?.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 38.92)
             colleButton.setTitleColor(UIColor.white, for: .normal)
             // タイトルを設定する(ボタンがハイライトされた時).
             colleButton.setTitleColor(UIColor.black, for: .highlighted)
@@ -75,7 +80,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         self.view.addSubview(scrollView)
         
         // Labelを作成.
-        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height / 11.12))
         // UILabelの背景をオレンジ色に.
         label.backgroundColor = UIColor.red
         // 文字の色を白に定義.
@@ -83,7 +88,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         // UILabelに文字を代入.
         label.text = "病気図鑑"
         //文字サイズ
-        label.font = UIFont.systemFont(ofSize:30)
+        label.font = UIFont.systemFont(ofSize:(self.view.frame.width + self.view.frame.height) / 64.87)
         // 文字の影をグレーに定義.
         label.shadowColor = UIColor.gray
         // Textを中央寄せにする.
@@ -96,7 +101,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         let width = self.view.frame.width
         let height = self.view.frame.height
         //デフォルト
-        let tabBarHeight:CGFloat = 100
+        let tabBarHeight:CGFloat = self.view.frame.height / 11.12
         /**   TabBarを設置   **/
         myTabBar = MyTabBar()
         myTabBar.frame = CGRect(x:0,y:height - tabBarHeight,width:width,height:tabBarHeight)
@@ -156,9 +161,9 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         
         // 背景を白に設定する.
         myWindow.backgroundColor = UIColor.white
-        myWindow.frame = CGRect(x:0, y:0, width:400, height:450)
+        myWindow.frame = CGRect(x:0, y:0, width: self.view.frame.width / 2.085, height: self.view.frame.height / 2.47)
         myWindow.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2)
-        myWindow.alpha = 0.8
+        myWindow.alpha = 1  //0.8
         myWindow.layer.cornerRadius = 20
         
         // myWindowをkeyWindowにする.
@@ -167,19 +172,10 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         // windowを表示する.
         self.myWindow.makeKeyAndVisible()
         
-        // ボタンを作成する.
-        myWindowButton.frame = CGRect(x:0, y:0, width:100, height:60)
-        myWindowButton.backgroundColor = UIColor.orange
-        myWindowButton.setTitle("Close", for: .normal)
-        myWindowButton.setTitleColor(UIColor.white, for: .normal)
-        myWindowButton.layer.masksToBounds = true
-        myWindowButton.layer.cornerRadius = 20.0
-        myWindowButton.layer.position = CGPoint(x:self.myWindow.frame.width/2, y:self.myWindow.frame.height-50)
-        myWindowButton.addTarget(self, action: #selector(Collection.CloseButton(sender:)), for: .touchUpInside)
-        self.myWindow.addSubview(myWindowButton)
         
+        //print(self.myWindow.frame.width)
         // TextViewを作成する.
-        let myTextView: UITextView = UITextView(frame: CGRect(x:10, y:10, width:self.myWindow.frame.width - 20, height:350))
+        let myTextView: UITextView = UITextView(frame: CGRect(x:0, y:20, width:self.view.frame.width / 2.085, height: self.myWindow.frame.height /  1.285))//width:self.myWindow.frame.width / 1.05
         myTextView.backgroundColor = UIColor.white
         myTextView.text = """
         No.\(String(s))
@@ -187,12 +183,25 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
         症状:\(Symptom[s - 1])
         原因:\(Cause[s - 1])
         """
-        myTextView.font = UIFont.systemFont(ofSize: 25)
+        myTextView.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 77.84)
         myTextView.textColor = UIColor.black
         myTextView.textAlignment = NSTextAlignment.left
         myTextView.isEditable = false
         
         self.myWindow.addSubview(myTextView)
+        
+        // ボタンを作成する.
+        myWindowButton.frame = CGRect(x:0, y:0, width: self.myWindow.frame.width / 2, height: self.view.frame.height / 18.53)
+        myWindowButton.backgroundColor = UIColor.orange
+        myWindowButton.setTitle("Close", for: .normal)
+        myWindowButton.setTitleColor(UIColor.white, for: .normal)
+        myWindowButton.layer.masksToBounds = true
+        myWindowButton.layer.cornerRadius = 20.0
+        //print("bh")
+        //print(self.myWindow.frame.height)
+        myWindowButton.layer.position = CGPoint(x:self.myWindow.frame.width/2, y:self.myWindow.frame.height / 1.125)
+        myWindowButton.addTarget(self, action: #selector(Collection.CloseButton(sender:)), for: .touchUpInside)
+        self.myWindow.addSubview(myWindowButton)
     }
     
     /*
@@ -201,7 +210,7 @@ class Collection:UIViewController , UITabBarDelegate , UIScrollViewDelegate {
     @objc internal func onClickMyButton(sender: UIButton) {
         let s = sender.tag
         makeMyWindow(s: s)
-        print("sender.tag: \(sender.tag)")
+        //print("sender.tag: \(sender.tag)")
         
     }
     

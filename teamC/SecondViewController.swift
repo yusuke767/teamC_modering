@@ -14,6 +14,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     private var hpBar:UIProgressView!
     private var dateLabel = UILabel()
     private var sleepLabel = UILabel()
+    private var LevelLabel = UILabel()
     
     // 日時フォーマット
     var dateFormatter: DateFormatter{
@@ -31,14 +32,14 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         setCharacterImage("ももこ.png")
 
     //date表示
-        dateLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
-        dateLabel.layer.position = CGPoint(x: 200 , y: 100)
+        dateLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: self.view.frame.height / 13.9)
+        dateLabel.layer.position = CGPoint(x: self.view.frame.width / 4 , y: self.view.frame.height / 11.12) //3.36
         dateLabel.backgroundColor = UIColor.white
         //　ラベル枠の枠線太さと色
         dateLabel.layer.borderColor = UIColor.black.cgColor
         dateLabel.layer.borderWidth = 2
         //文字サイズ
-        dateLabel.font = UIFont.systemFont(ofSize:25)
+        dateLabel.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 100)//77.84
         // Textを中央寄せにする.
         dateLabel.textAlignment = NSTextAlignment.center
         self.view.addSubview(dateLabel)
@@ -48,47 +49,107 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         let time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateDateLabel), userInfo: nil, repeats: true)
         time.fire()    // 無くても動くけどこれが無いと初回の実行がラグる
         
-    //睡眠時間
-        sleepLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 80)
-        sleepLabel.layer.position = CGPoint(x: 650 , y: 100)
+        //レベル
+        let file_exp = "好感度.txt"
+        var exp_data : String = ""
+        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
+            let path_file_name = dir.appendingPathComponent( file_exp  )
+            do {
+                let exp_txt = try String( contentsOf: path_file_name, encoding: String.Encoding.utf8 )
+                exp_data = exp_txt
+            } catch {
+                print("レベル読み込みエラー")
+            }
+        }
+        LevelLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 9, height: self.view.frame.height / 13.9)
+        LevelLabel.layer.position = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 11.12)//1.28
+        LevelLabel.backgroundColor = UIColor.white
+        //　ラベル枠の枠線太さと色
+        LevelLabel.layer.borderColor = UIColor.black.cgColor
+        LevelLabel.layer.borderWidth = 2
+        LevelLabel.text = "レベル\n \(exp_data)"
+        LevelLabel.numberOfLines = 0
+        //文字サイズ
+        LevelLabel.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 100)
+        // Textを中央寄せにする.
+        LevelLabel.textAlignment = NSTextAlignment.center
+        self.view.addSubview(LevelLabel)
+        
+ //睡眠時間
+        var count = 0
+        let file_sleepTime = "睡眠時間.txt"
+        var sleep_yesterday : String = ""
+        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
+            let path_file_name = dir.appendingPathComponent( file_sleepTime )
+            do {
+                let SleepT_data = try String( contentsOf: path_file_name, encoding: String.Encoding.utf8 )
+                sleep_yesterday = SleepT_data
+                count = 1
+            } catch {
+                print("前回の睡眠時間読み込みエラー")
+            }
+        }
+        let sleep_t = sleep_yesterday.suffix(10)
+        var result = sleep_t.replacingOccurrences(of:" ",with:"")
+        result = result.replacingOccurrences(of:"\n",with:"")
+        let stime = result.prefix(4)
+        let hTime = stime.prefix(2)
+        let mTime = stime.suffix(2)
+        
+        sleepLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: self.view.frame.height / 13.9)
+        sleepLabel.layer.position = CGPoint(x: self.view.frame.width / 1.33, y: self.view.frame.height / 11.12)//1.28
         sleepLabel.backgroundColor = UIColor.white
         //　ラベル枠の枠線太さと色
         sleepLabel.layer.borderColor = UIColor.black.cgColor
         sleepLabel.layer.borderWidth = 2
-        sleepLabel.text = """
-        前回の睡眠時間
-        Test1
-        """
+        if count == 1 {
+            sleepLabel.text = "前回の睡眠時間\n \(hTime)時間\(mTime)分"
+        }else{
+            sleepLabel.text = "前回の睡眠時間\n まだ寝てません"
+        }
         sleepLabel.numberOfLines = 0
         //文字サイズ
-        sleepLabel.font = UIFont.systemFont(ofSize:25)
+        sleepLabel.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 100)
         // Textを中央寄せにする.
         sleepLabel.textAlignment = NSTextAlignment.center
         self.view.addSubview(sleepLabel)
         
-        
-    //ラベル
+ //ラベル
         let label = UILabel()
         label.text = "HP"
-        label.font = UIFont(name: "HiraMinProN-W3", size: 30)
+        label.font = UIFont(name: "HiraMinProN-W3", size: (self.view.frame.width + self.view.frame.height) / 64.86)
         label.sizeToFit()
-        label.center = CGPoint(x: 200, y: 100) // UILabelの中央座標を (200, 100) にする
-        label.layer.position = CGPoint(x: 150 , y: self.view.frame.height - 200)
+        //label.center = CGPoint(x: 200, y: 100) // UILabelの中央座標を (200, 100) にする
+        label.layer.position = CGPoint(x: self.view.frame.width / 5.56, y: self.view.frame.height / 1.22)
         self.view.addSubview(label)
         
         //HPバー
         // ProgressViewを作成する.
-        hpBar = UIProgressView(frame: CGRect(x:0, y:0, width:400, height:10))
+        hpBar = UIProgressView(frame: CGRect(x:0, y:0, width: self.view.frame.width / 2.085, height: self.view.frame.height / 111.2))
         hpBar.progressTintColor = UIColor.green
         hpBar.trackTintColor = UIColor.white
         // 座標を設定する.
-        hpBar.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 200 )
+        hpBar.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height / 1.22)
         // バーの高さを設定する(横に1.0倍,縦に2.0倍).
-        hpBar.transform = CGAffineTransform(scaleX: 1.0, y: 7.0)
+        hpBar.transform = CGAffineTransform(scaleX: 1.0, y: self.view.frame.height / 158.86)
         // 進捗具合を設定する(0.0~1.0).
-        hpBar.progress = 0.3
+        hpBar.progress = 1.0
         // アニメーションを付ける.
-       hpBar.setProgress(1.0, animated: true)
+        let file_HP = "体力.txt"
+        var bar_point : Float = 0
+        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
+            let path_file_name = dir.appendingPathComponent( file_HP )
+            do {
+                let HP_data = try String( contentsOf: path_file_name, encoding: String.Encoding.utf8 )
+                bar_point = Float(HP_data)!
+            } catch {
+                print("HPバー読み込みエラー")
+            }
+        }
+        let hp = bar_point / 100
+        //print(bar_point)
+        //print(hp)
+        hpBar.setProgress(hp, animated: true)
         // Viewに追加する.
         self.view.addSubview(hpBar)
         
@@ -96,7 +157,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         let width = self.view.frame.width
         let height = self.view.frame.height
         //デフォルトは49
-        let tabBarHeight:CGFloat = 100
+        let tabBarHeight:CGFloat = self.view.frame.height / 11.12
         /**   TabBarを設置   **/
         myTabBar = MyTabBar()
         myTabBar.frame = CGRect(x:0,y:height - tabBarHeight,width:width,height:tabBarHeight)

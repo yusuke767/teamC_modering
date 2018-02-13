@@ -12,14 +12,43 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
     var count = 0
+    var check = 0
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = ViewController()
         self.window?.makeKeyAndVisible()
+        
+        //初回起動時だけ実行
+        let file_name = "体力.txt"
+        let file_name_2 = "好感度.txt"
+        let file_name_3 = "カウント.txt"
+        let userDefault = UserDefaults.standard
+        let dict = ["firstLaunch": true]
+        userDefault.register(defaults: dict)
+        if userDefault.bool(forKey: "firstLaunch") {
+            userDefault.set(false, forKey: "firstLaunch")
+            if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
+                let path_file_name = dir.appendingPathComponent( file_name )
+                let path_file_name_2 = dir.appendingPathComponent( file_name_2 )
+                let path_file_name_3 = dir.appendingPathComponent( file_name_3 )
+                let text_hp = "100"
+                let text_exp = "0"
+                let text_count = "0"
+                do {
+                    try text_hp.write( to: path_file_name, atomically: false, encoding: String.Encoding.utf8 )
+                    try text_exp.write( to: path_file_name_2, atomically: false, encoding: String.Encoding.utf8 )
+                    try text_count.write( to: path_file_name_3, atomically: false, encoding: String.Encoding.utf8 )
+                } catch {
+                    print("初回書き込みエラー")
+                }
+            }
+            print("初回起動時実行")
+        }
+        
         //aaa
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in

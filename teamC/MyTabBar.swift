@@ -12,7 +12,8 @@ class MyTabBar: UITabBar {
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var size = super.sizeThatFits(size)
-        size.height = 100
+        size.height = self.frame.height
+        //print(self.frame.height)
         return size
     }
 

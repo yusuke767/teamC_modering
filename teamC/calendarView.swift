@@ -106,6 +106,9 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
     private var myTabBar:MyTabBar!
     private var coleView: UIView!
     private var myCollectView:UICollectionView!
+    private var myWindow: UIWindow!
+    private var myWindowButton: UIButton!
+    
     //セルの余白
     let cellMargin:CGFloat = 2.0
     //１週間に何日あるか(行数)
@@ -124,10 +127,10 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         super.viewDidLoad()
         
         //画面を表示
-        self.view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.blue
         
-    // Labelを作成.
-        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        // Labelを作成.
+        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height / 11.12))
         // UILabelの背景をオレンジ色に.
         label.backgroundColor = UIColor.red
         // 文字の色を白に定義.
@@ -135,31 +138,31 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         // UILabelに文字を代入.
         label.text = "カレンダー"
         //文字サイズ
-        label.font = UIFont.systemFont(ofSize:30)
+        label.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 64.87)
         // 文字の影をグレーに定義.
         label.shadowColor = UIColor.gray
         // Textを中央寄せにする.
         label.textAlignment = NSTextAlignment.center
         // ViewにLabelを追加.
         self.view.addSubview(label)
-
-    //カレンダー
         
-         let barHeight = UIApplication.shared.statusBarFrame.size.height
-         let width = self.view.frame.width
-         let height = self.view.frame.height
-         let layout = UICollectionViewFlowLayout()
-         layout.sectionInset = UIEdgeInsetsMake(0,0,0,0)
+        //カレンダー
         
-         //コレクションビューを設置していくよ
-         myCollectView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-         myCollectView.frame = CGRect(x:0,y:barHeight + 50,width:width,height:height - barHeight - 50)
-         myCollectView.register(CalendarCell.self, forCellWithReuseIdentifier: "collectCell")
-         myCollectView.delegate = self
-         myCollectView.dataSource = self
-         myCollectView.backgroundColor = .white
-         
-         self.view.addSubview(myCollectView)
+        let barHeight = UIApplication.shared.statusBarFrame.size.height
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsetsMake(0,0,0,0)
+        //print(barHeight)
+        //コレクションビューを設置
+        myCollectView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myCollectView.frame = CGRect(x:0,y:self.view.frame.height / 11.12,width:width,height:height - self.view.frame.height / 11.12 - self.view.frame.height / 11.12)//barHeight + 50
+        myCollectView.register(CalendarCell.self, forCellWithReuseIdentifier: "collectCell")
+        myCollectView.delegate = self
+        myCollectView.dataSource = self
+        myCollectView.backgroundColor = .white
+        
+        self.view.addSubview(myCollectView)
         
         let date = Date()
         var components = NSCalendar.current.dateComponents([.year ,.month, .day], from:date)
@@ -172,8 +175,8 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         let digit = numberOfDigit(month: month)
         
         monthLabel = UILabel()
-        monthLabel.frame = CGRect(x:0,y:0,width:width,height:100)
-        monthLabel.center = CGPoint(x:width / 2,y:100)
+        monthLabel.frame = CGRect(x:0,y:0,width:width,height:height)//200
+        monthLabel.center = CGPoint(x:width / 1.25,y:height / 22.24)//100
         monthLabel.textAlignment = .center
         
         if(digit == 5){
@@ -182,13 +185,13 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
             monthLabel.text = String(month / 100) + "年" + String(month % 100) + "月"
         }
         self.view.addSubview(monthLabel)
-       
+        
         
         //tabbar
         let tabwidth = self.view.frame.width
         let tabheight = self.view.frame.height
         //デフォルトは49
-        let tabBarHeight:CGFloat = 100
+        let tabBarHeight:CGFloat = self.view.frame.height / 11.12
         /**   TabBarを設置   **/
         myTabBar = MyTabBar()
         myTabBar.frame = CGRect(x:0,y:tabheight - tabBarHeight,width:tabwidth,height:tabBarHeight)
@@ -240,9 +243,12 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
     //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("押された")
-        print(indexPath.row % 7)
         print(dateManager.monthTag(row:indexPath.row,startDate:startDate))
         print(dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate))
+        let ym = dateManager.monthTag(row:indexPath.row,startDate:startDate)
+        let d = dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate)
+        let s = Int(ym + d)!
+        sleepTimeWindow(s:s)
     }
     
     //セルの総数
@@ -321,20 +327,74 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag{
         case 1:
+            self.myWindow = nil;
             let myViewController: UIViewController = SecondViewController()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         case 2:
+            self.myWindow = nil;
             let myViewController: UIViewController = Collection()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         case 3:
+            self.myWindow = nil;
             let myViewController: UIViewController = calendarView()// 遷移するViewを定義する.
             myViewController.modalTransitionStyle = .crossDissolve
             self.present(myViewController, animated: true, completion: nil)
         default : return
             
         }
+    }
+    
+    func sleepTimeWindow(s: Int){
+        myWindow = UIWindow()
+        myWindowButton = UIButton()
+        
+        // 背景を白に設定する.
+        myWindow.backgroundColor = UIColor.red
+        myWindow.frame = CGRect(x:0, y:0, width: self.view.frame.width / 2.085, height: self.view.frame.height / 2.47)
+        myWindow.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2)
+        myWindow.alpha = 1  //0.8
+        myWindow.layer.cornerRadius = 20
+        
+        // myWindowをkeyWindowにする.
+        myWindow.makeKey()
+        
+        // windowを表示する.
+        self.myWindow.makeKeyAndVisible()
+        
+        
+        //print(self.myWindow.frame.width)
+        // TextViewを作成する.
+        let myTextView: UITextView = UITextView(frame: CGRect(x:self.myWindow.frame.width / 14, y:20, width:self.view.frame.width / 2.4 , height: self.myWindow.frame.height /  1.4))//width:self.myWindow.frame.width / 1.05 h1.285
+        myTextView.backgroundColor = UIColor.white
+        print(s)
+        myTextView.text = """
+        \(String(s))
+        """
+        myTextView.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 77.84)
+        myTextView.textColor = UIColor.black
+        myTextView.textAlignment = NSTextAlignment.left
+        myTextView.isEditable = false
+        
+        self.myWindow.addSubview(myTextView)
+        
+        // ボタンを作成する.
+        myWindowButton.frame = CGRect(x:0, y:0, width: self.myWindow.frame.width / 2, height: self.view.frame.height / 18.53)
+        myWindowButton.backgroundColor = UIColor.orange
+        myWindowButton.setTitle("Close", for: .normal)
+        myWindowButton.setTitleColor(UIColor.white, for: .normal)
+        myWindowButton.layer.masksToBounds = true
+        myWindowButton.layer.cornerRadius = 20.0
+        //print("bh")
+        //print(self.myWindow.frame.height)
+        myWindowButton.layer.position = CGPoint(x:self.myWindow.frame.width/2, y:self.myWindow.frame.height / 1.125)
+        myWindowButton.addTarget(self, action: #selector(Collection.CloseButton(sender:)), for: .touchUpInside)
+        self.myWindow.addSubview(myWindowButton)
+    }
+    
+    @objc func CloseButton(sender: UIButton) {
+        myWindow.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
