@@ -16,7 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var check = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        //初回起動時にtextがない場合、デフォルトの時間書き込み
+        let sleep = NSDate()
+        let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let comps = calendar.components([.year, .month, .day, .hour, .minute, .second], from: sleep as Date)
+        
+        let documentsPath = NSHomeDirectory() + "/Documents"
+        let file_path1 = documentsPath + "/slept_time.txt"
+        let file_path2 = documentsPath + "/睡眠時間.txt"
+        
+        let checkValidation = FileManager.default
+        do{
+            if (checkValidation.fileExists(atPath: file_path1)){
+                print("slept_time.txtは存在する")
+            }else{
+                let first_slept_time = "22:00:00\n"
+                try first_slept_time.write(toFile: file_path1, atomically: true, encoding: String.Encoding.utf8)
+            }
+        }
+        catch{
+        }
+        do{
+            if (checkValidation.fileExists(atPath: file_path2)){
+                print("睡眠時間.txtは存在する")
+            }else{
+                let first_sleep_time = String(format: "%2d %2d 10 00 00 \n",comps.month!,comps.day!)
+                try first_sleep_time.write(toFile: file_path2, atomically: true, encoding: String.Encoding.utf8)
+            }
+        }
+        catch{
+        }
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = ViewController()

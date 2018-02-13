@@ -84,12 +84,13 @@ class Filewrite{
             let documentsPath = NSHomeDirectory() + "/Documents"
             let file_path = documentsPath + "/睡眠時間.txt"
             print(file_path)
-            //"/Users/e165703/モデリングC/睡眠時間.txt"普通のパス
-            try date_String.write(toFile: file_path, atomically: true, encoding: String.Encoding.utf8)
-            //------------テスト用
-            let path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
-            try date_String.write(toFile: path_suimin, atomically: true, encoding: String.Encoding.utf8)
-            //------------
+            var fileurl = URL(fileURLWithPath: file_path)
+            let stream = OutputStream(url: fileurl, append: true)
+            stream?.open()
+            let data = date_String.data(using: .utf8)
+            let result = data?.withUnsafeBytes {
+                stream?.write($0, maxLength: (data?.count)!)
+            }
         }
         catch{
             print("error")
