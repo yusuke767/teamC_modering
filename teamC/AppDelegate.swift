@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (checkValidation.fileExists(atPath: file_path1)){
                 print("slept_time.txtは存在する")
             }else{
-                let first_slept_time = "22:00:00\n"
+                let first_slept_time = "12:00:00\n"
                 try first_slept_time.write(toFile: file_path1, atomically: true, encoding: String.Encoding.utf8)
             }
         }
@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tairyoku : CharacterHP = CharacterHP()
         
-        if 4 < hour! && hour! <= 15 {
+        if 4 < hour! && hour! <= 12 {
             if count == 0{
                 suimin_2.sleep_time()
                 tairyoku.CharaHP()
