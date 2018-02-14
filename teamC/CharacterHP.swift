@@ -13,7 +13,7 @@ class CharacterHP {
         
         let stand_sleep_time: Float = 27000 //目安となる睡眠時間(7時間30分)
         var hit_point: Float = 0            //体力
-        var exp_point: Float = 0            //好感度
+        var exp_point: Int = 0            //好感度
         
         //ファイルパス
         let documentsPath = NSHomeDirectory() + "/Documents"
@@ -27,7 +27,7 @@ class CharacterHP {
             hit_point = Float(tairyoku)!
             //好感度読み込み
             let koukando = try String( contentsOfFile: file_path_EXP, encoding: String.Encoding.utf8 )
-            exp_point = Float(koukando)!
+            exp_point = Int(Float(koukando)!)
             //睡眠時間読み込み
             //let file_path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
             let text = try String( contentsOfFile: file_path_suimin, encoding: String.Encoding.utf8 )
@@ -59,6 +59,8 @@ class CharacterHP {
                     //睡眠時間が基準より少ないとHPを減らす
                     per_time = 1 - per_time
                     hit_point = hit_point - (per_time * 100)
+                    print("hit_point")
+                    print(hit_point)
                 } else if per_time >= 1 {
                     //睡眠時間が基準より多ければ好感度を増やす
                     exp_point = exp_point + 1

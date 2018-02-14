@@ -77,18 +77,17 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         
  //睡眠時間
         var count = 0
-        let file_sleepTime = "睡眠時間.txt"
+        let document = NSHomeDirectory() + "/Documents"
+        let file_sleepTime = document + "/睡眠時間.txt"
         var sleep_yesterday : String = ""
-        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let path_file_name = dir.appendingPathComponent( file_sleepTime )
-            do {
-                let SleepT_data = try String( contentsOf: path_file_name, encoding: String.Encoding.utf8 )
-                sleep_yesterday = SleepT_data
-                count = 1
-            } catch {
-                print("前回の睡眠時間読み込みエラー")
-            }
+        do {
+            let SleepT_data = try String( contentsOfFile: file_sleepTime, encoding: String.Encoding.utf8 )
+            sleep_yesterday = SleepT_data
+            count = 1
+        } catch {
+            print("前回の睡眠時間読み込みエラー")
         }
+        
         let sleep_t = sleep_yesterday.suffix(10)
         var result = sleep_t.replacingOccurrences(of:" ",with:"")
         result = result.replacingOccurrences(of:"\n",with:"")
@@ -135,17 +134,15 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         // 進捗具合を設定する(0.0~1.0).
         hpBar.progress = 1.0
         // アニメーションを付ける.
-        let file_HP = "体力.txt"
+        let file_HP = document + "/体力.txt"
         var bar_point : Float = 0
-        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let path_file_name = dir.appendingPathComponent( file_HP )
-            do {
-                let HP_data = try String( contentsOf: path_file_name, encoding: String.Encoding.utf8 )
-                bar_point = Float(HP_data)!
-            } catch {
-                print("HPバー読み込みエラー")
-            }
+        do {
+            let HP_data = try String( contentsOfFile: file_HP , encoding: String.Encoding.utf8 )
+            bar_point = Float(HP_data)!
+        } catch {
+            print("HPバー読み込みエラー")
         }
+        
         let hp = bar_point / 100
         //print(bar_point)
         //print(hp)

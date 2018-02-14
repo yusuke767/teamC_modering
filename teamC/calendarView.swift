@@ -148,7 +148,7 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         
         //カレンダー
         
-        let barHeight = UIApplication.shared.statusBarFrame.size.height
+        //let barHeight = UIApplication.shared.statusBarFrame.size.height
         let width = self.view.frame.width
         let height = self.view.frame.height
         let layout = UICollectionViewFlowLayout()

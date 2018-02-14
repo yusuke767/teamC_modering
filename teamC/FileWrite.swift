@@ -56,19 +56,19 @@ class Filewrite{
             
             var getup_minute: Int = Int(get_up[1])!
             getup_minute = 60*getup_minute
-            var getup_second: Int = Int(get_up[2])!
-            var getup_all = getup_hour+getup_second+getup_minute
+            let getup_second: Int = Int(get_up[2])!
+            let getup_all = getup_hour+getup_second+getup_minute
             print(getup_all)
             var sleeptime_hour: Int = Int(sleeptime[0])!
-            var t: Int = Int(sleeptime[0])!
+            let t: Int = Int(sleeptime[0])!
             sleeptime_hour = 60*60*sleeptime_hour
             if sleeptime_hour == 82800 || sleeptime_hour == 79200{
                 sleeptime_hour = 0
             }
             var sleeptime_minute: Int = Int(sleeptime[1])!
             sleeptime_minute = 60*sleeptime_minute
-            var sleeptime_second: Int = Int(sleeptime[2])!
-            var sleeptime_all = sleeptime_hour+sleeptime_second+sleeptime_minute
+            let sleeptime_second: Int = Int(sleeptime[2])!
+            let sleeptime_all = sleeptime_hour+sleeptime_second+sleeptime_minute
             print(sleeptime_all)
             var suimin_second = getup_all-sleeptime_all
             if t == 23{
@@ -80,13 +80,13 @@ class Filewrite{
             let suimin_hour = suimin_second/3600
             let suimin_minute = (suimin_second%3600)/60
             let suimin_second2 = (suimin_second%3600)%60
-            var date_String = String(format: "%2d %2d %02d %02d %02d \n",comps.month!,comps.day!,suimin_hour,suimin_minute,suimin_second2)
+            let date_String = String(format: "%2d %2d %02d %02d %02d \n",comps.month!,comps.day!,suimin_hour,suimin_minute,suimin_second2)
             
             print(date_String)
             let documentsPath_2 = NSHomeDirectory() + "/Documents"
             let file_path_2 = documentsPath_2 + "/睡眠時間.txt"
             print(file_path_2)
-            var fileurl = URL(fileURLWithPath: file_path_2)
+            let fileurl = URL(fileURLWithPath: file_path_2)
             let stream = OutputStream(url: fileurl, append: true)
             stream?.open()
             let data = date_String.data(using: .utf8)
