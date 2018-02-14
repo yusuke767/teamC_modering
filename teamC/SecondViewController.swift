@@ -15,6 +15,8 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
     private var dateLabel = UILabel()
     private var sleepLabel = UILabel()
     private var LevelLabel = UILabel()
+    private var SerifWindow: UIWindow!
+    private var charaButton:UIButton!
     
     // 日時フォーマット
     var dateFormatter: DateFormatter{
@@ -200,6 +202,21 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         self.view.contentMode = UIViewContentMode.topLeft
         // 画像を追加
         self.view.addSubview(imageView)
+        
+        //画像をボタンにする
+        charaButton = UIButton()
+        // ボタンのサイズ.
+        charaButton.frame = rect;
+        // ボタンの設置座標
+        charaButton.center = CGPoint(x:screenWidth/2, y:screenHeight*3/5)
+        //ボタンを透明に
+        charaButton.backgroundColor = UIColor.clear
+        // ボタンにタグをつける.
+        charaButton.tag = 1
+        // イベントを追加する
+        charaButton.addTarget(self, action: #selector(SecondViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        // ボタンをViewに追加.
+        self.view.addSubview(charaButton)
     }
     
     //背景画像設定
@@ -246,6 +263,48 @@ class SecondViewController: UIViewController,UITextFieldDelegate,UITabBarDelegat
         default : return
             
         }
+    }
+    
+    /*
+     セリフWindowを生成する
+     */
+    func makeMyWindow(s: Int){
+        
+        var Serif: [String] = ["ふぁ…","お兄ちゃん…？","今日はなにをしてきたの？","調子はどう？","大丈夫？お布団行く？"]
+        SerifWindow = UIWindow()
+        
+        // 背景を白に設定する.
+        SerifWindow.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+        SerifWindow.frame = CGRect(x:0, y:0, width: self.view.frame.width / 1.0425, height: self.view.frame.height / 4.94)
+        SerifWindow.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height*4/5)
+        SerifWindow.alpha = 1  //0.8
+        SerifWindow.layer.cornerRadius = 20
+        // windowを表示する.
+        self.SerifWindow.makeKeyAndVisible()
+        
+        
+        //print(self.myWindow.frame.width)
+        // TextViewを作成する.
+        let myTextView: UITextView = UITextView(frame: CGRect(x:0, y:0, width:self.view.frame.width / 2.085, height: self.SerifWindow.frame.height /  1.285))//width:self.myWindow.frame.width / 1.05
+        myTextView.layer.position = CGPoint(x:self.view.frame.width/2, y:100)
+        myTextView.backgroundColor = UIColor.clear
+        myTextView.text = """
+        \(Serif[Int(arc4random()) % Int(Serif.count)])
+        """
+        myTextView.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 77.84)
+        myTextView.textColor = UIColor.black
+        myTextView.textAlignment = NSTextAlignment.left
+        myTextView.isEditable = false
+        
+        self.SerifWindow.addSubview(myTextView)
+        
+    }
+    
+    @objc internal func onClickMyButton(sender: UIButton) {
+        let s = sender.tag
+        makeMyWindow(s: s)
+        //print("sender.tag: \(sender.tag)")
+        
     }
     
     override func didReceiveMemoryWarning() {
