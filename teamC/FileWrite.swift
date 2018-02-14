@@ -88,7 +88,7 @@ class Filewrite{
             //print("date_String\(date_String)")
             let documentsPath_2 = NSHomeDirectory() + "/Documents"
             let file_path_2 = documentsPath_2 + "/睡眠時間.txt"
-            print("file_path_2\(file_path_2)")
+            //print("file_path_2\(file_path_2)")
             let fileurl = URL(fileURLWithPath: file_path_2)
             let stream = OutputStream(url: fileurl, append: true)
             stream?.open()

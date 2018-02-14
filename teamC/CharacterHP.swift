@@ -32,19 +32,19 @@ class CharacterHP {
             //let file_path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
             let text = try String( contentsOfFile: file_path_suimin, encoding: String.Encoding.utf8 )
             let suimin = text.components(separatedBy: " ")
-            print("suimin:\(suimin)")
+            //print("suimin:\(suimin)")
             
             //時
             var suimin_hour: Int = Int(suimin[3])!
-            print("suimin:\(suimin_hour)")
+            //print("suimin:\(suimin_hour)")
             suimin_hour = suimin_hour*60*60
             //分
             var suimin_minute: Int = Int(suimin[4])!
-            print("suimin:\(suimin_minute)")
+            //print("suimin:\(suimin_minute)")
             suimin_minute = suimin_minute*60
             //秒
             let suimin_second: Int = Int(suimin[5])!
-            print("suimin:\(suimin_second)")
+            //print("suimin:\(suimin_second)")
             //睡眠時間合計・秒
             let suimin_all = suimin_hour+suimin_minute+suimin_second
             let sleep_time_float = Float(suimin_all)
@@ -59,8 +59,8 @@ class CharacterHP {
                     //睡眠時間が基準より少ないとHPを減らす
                     per_time = 1 - per_time
                     hit_point = hit_point - (per_time * 100)
-                    print("hit_point")
-                    print(hit_point)
+                    //print("hit_point")
+                    //print(hit_point)
                 } else if per_time >= 1 {
                     //睡眠時間が基準より多ければ好感度を増やす
                     exp_point = exp_point + 1
@@ -82,7 +82,7 @@ class CharacterHP {
             //----------
             */
         } catch {
-            print("エラー")
+            print("Characterエラー")
         }
         
     }

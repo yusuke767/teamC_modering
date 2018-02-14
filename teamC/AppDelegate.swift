@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tairyoku : CharacterHP = CharacterHP()
         
-        if 4 < hour! && hour! <= 12 {
+        if 4 < hour! && hour! <= 15 {
             if count == 0{
                 suimin_2.sleep_time()
                 tairyoku.CharaHP()
@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try d.write(toFile: file_path, atomically: true, encoding: String.Encoding.utf8)
             } catch {
-                print("aaa")
+                print("slept_timeエラー")
                 // Failed to write file
             }
         }
@@ -153,10 +153,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             //体力の数値を"CharaHP"に保存
             let CharaHP = try String( contentsOfFile: file_path, encoding: String.Encoding.utf8 )
-            print("体力\(CharaHP)")
+            //print("体力\(CharaHP)")
             //好感度の数値を"CharaEXP"に保存
             let CharaEXP = try String( contentsOfFile: file_path_2, encoding: String.Encoding.utf8 )
-            print("好感度\(CharaEXP)")
+            //print("好感度\(CharaEXP)")
         } catch {
             print("エラー")
         }
