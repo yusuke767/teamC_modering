@@ -50,6 +50,7 @@ class Filewrite{
             let text = try String(contentsOfFile: file_path_1, encoding: String.Encoding.utf8)
             let get_up = sleep3.components(separatedBy: ":")
             var sleeptime = text.components(separatedBy: ":")
+            sleeptime[2] = sleeptime[2].replacingOccurrences(of:"\n",with:"")
             print("sleeptime\(sleeptime)")
             
             
