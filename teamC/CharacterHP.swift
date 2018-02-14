@@ -32,7 +32,7 @@ class CharacterHP {
             //let file_path_suimin = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/睡眠時間.txt"
             let text = try String( contentsOfFile: file_path_suimin, encoding: String.Encoding.utf8 )
             let suimin = text.components(separatedBy: " ")
-            //print("suimin:\(suimin)")
+            print("suimin:\(suimin)")
             
             //時
             var suimin_hour: Int = Int(suimin[3])!
