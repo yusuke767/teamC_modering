@@ -247,6 +247,10 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         print(dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate))
         let ym = dateManager.monthTag(row:indexPath.row,startDate:startDate)
         let d = dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate)
+        let y_str = String(ym.prefix(4))
+        let m_str = String(ym.suffix(ym.characters.count - 4))
+        //print("y:\(y_str)")
+        //print("m:\(m_str)")
         let s = Int(ym + d)!
         sleepTimeWindow(s:s)
     }
