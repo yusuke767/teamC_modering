@@ -73,14 +73,14 @@ class CharacterHP {
             //体力、好感度をテキストファイルに書き込む.
             try hit_point_str.write(toFile: file_path_HP, atomically: true, encoding: String.Encoding.utf8)
             try exp_point_str.write(toFile: file_path_EXP, atomically: true, encoding: String.Encoding.utf8)
-            
+            /*
             //----------テスト用
             let path_HP = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/体力.txt"
             try hit_point_str.write(toFile: path_HP, atomically: true, encoding: String.Encoding.utf8)
             let path_EXP = "/Users/e155748/Desktop/teamC_modering/teamC/TXT/好感度.txt"
             try exp_point_str.write(toFile: path_EXP, atomically: true, encoding: String.Encoding.utf8)
             //----------
-            
+            */
         } catch {
             print("エラー")
         }

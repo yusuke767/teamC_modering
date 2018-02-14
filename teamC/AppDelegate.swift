@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tairyoku : CharacterHP = CharacterHP()
         
-        if 4 < hour! && hour! <= 12 {
+        if 4 < hour! && hour! <= 15 {
             if count == 0{
                 suimin_2.sleep_time()
                 tairyoku.CharaHP()
