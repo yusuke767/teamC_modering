@@ -251,8 +251,10 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         let m_str = String(ym.suffix(ym.characters.count - 4))
         //print("y:\(y_str)")
         //print("m:\(m_str)")
-        let s = Int(ym + d)!
-        sleepTimeWindow(s:s)
+        let y = Int(y_str)!
+        let m = Int(m_str)!
+        let dd = Int(d)!
+        sleepTimeWindow(y:y,m:m,d:dd)
     }
     
     //セルの総数
@@ -350,7 +352,7 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         }
     }
     
-    func sleepTimeWindow(s: Int){
+    func sleepTimeWindow(y: Int,m: Int,d: Int){
         myWindow = UIWindow()
         myWindowButton = UIButton()
         
@@ -372,9 +374,10 @@ class calendarView: UIViewController , UITabBarDelegate , UICollectionViewDelega
         // TextViewを作成する.
         let myTextView: UITextView = UITextView(frame: CGRect(x:self.myWindow.frame.width / 14, y:20, width:self.view.frame.width / 2.4 , height: self.myWindow.frame.height /  1.4))//width:self.myWindow.frame.width / 1.05 h1.285
         myTextView.backgroundColor = UIColor.white
-        print(s)
+        print("y:\(y)")
+        
         myTextView.text = """
-        \(String(s))
+        \(String(y))年\(String(m))月\(String(d))日
         """
         myTextView.font = UIFont.systemFont(ofSize: (self.view.frame.width + self.view.frame.height) / 77.84)
         myTextView.textColor = UIColor.black
