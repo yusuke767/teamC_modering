@@ -12,6 +12,7 @@
 		B4D2A4762020A9E400DEFA1B /* titleback.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D2A4752020A9E400DEFA1B /* titleback.png */; };
 		B4D2A4782020A9EC00DEFA1B /* titlelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D2A4772020A9EC00DEFA1B /* titlelogo.png */; };
 		B81DAA53201976A2007CCFF1 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DAA52201976A1007CCFF1 /* FileWrite.swift */; };
+		B844935920352BAC00FCB8E8 /* moderu.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B844935820352BAC00FCB8E8 /* moderu.pdf */; };
 		B8511D51202F40DE008F699B /* slept_time.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8511D4F202F40DE008F699B /* slept_time.txt */; };
 		B8511D52202F40DE008F699B /* 睡眠時間.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8511D50202F40DE008F699B /* 睡眠時間.txt */; };
 		B857CB132029E20400BB7012 /* 好感度.txt in Resources */ = {isa = PBXBuildFile; fileRef = B857CB112029E20400BB7012 /* 好感度.txt */; };
@@ -60,6 +61,7 @@
 		B4D2A4752020A9E400DEFA1B /* titleback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleback.png; sourceTree = "<group>"; };
 		B4D2A4772020A9EC00DEFA1B /* titlelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlelogo.png; sourceTree = "<group>"; };
 		B81DAA52201976A1007CCFF1 /* FileWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWrite.swift; sourceTree = "<group>"; };
+		B844935820352BAC00FCB8E8 /* moderu.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = moderu.pdf; sourceTree = SOURCE_ROOT; };
 		B8511D4F202F40DE008F699B /* slept_time.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slept_time.txt; sourceTree = "<group>"; };
 		B8511D50202F40DE008F699B /* 睡眠時間.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "睡眠時間.txt"; sourceTree = "<group>"; };
 		B857CB112029E20400BB7012 /* 好感度.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "好感度.txt"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		FF0DBA6D1FD8557300451FB8 = {
 			isa = PBXGroup;
 			children = (
+				B844935820352BAC00FCB8E8 /* moderu.pdf */,
 				FF0DBA781FD8557300451FB8 /* teamC */,
 				FF0DBA8D1FD8557300451FB8 /* teamCTests */,
 				FF0DBA981FD8557300451FB8 /* teamCUITests */,
@@ -343,6 +346,7 @@
 				FF0DBA811FD8557300451FB8 /* Assets.xcassets in Resources */,
 				B4C38ED920199A9700DA3351 /* hyposomniac_nightmere.mp3 in Resources */,
 				FF77C6211FDBC30A009DE662 /* home2.png in Resources */,
+				B844935920352BAC00FCB8E8 /* moderu.pdf in Resources */,
 				B4D2A4782020A9EC00DEFA1B /* titlelogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
